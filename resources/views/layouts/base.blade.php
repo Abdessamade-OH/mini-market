@@ -24,7 +24,7 @@
         <nav class="navbar fixed-top navbar-expand-md navbar-dark bg-transparent" id="page-navigation">
             <div class="container">
                 <!-- Navbar Brand -->
-                <a href="index.html" class="navbar-brand">
+                <a href="/" class="navbar-brand">
                     <img src="{{ asset('assets/img/logo/logo.png') }}" alt="">
                 </a>
 
@@ -37,23 +37,10 @@
                     <!-- Navbar Menu -->
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a href="shop.html" class="nav-link">Shop</a>
+                            <a href="/shop" class="nav-link">Shop</a>
                         </li>
-                        <li class="nav-item">
-                            <a href="register.html" class="nav-link">Register</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="login.html" class="nav-link">Login</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <div class="avatar-header"><img src="assets/img/logo/avatar.jpg"></div> John Doe
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="transaction.html">Transactions History</a>
-                                <a class="dropdown-item" href="setting.html">Settings</a>
-                            </div>
-                          </li>
+
+                        
                         <li class="nav-item dropdown">
                             <a href="javascript:void(0)" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-shopping-basket"></i> <span class="badge badge-primary">5</span>
@@ -124,6 +111,49 @@
                                 </ul>
                             </div>
                         </li>
+                       @if(Route::has('login')) 
+                            @auth
+                                @if(Auth::user()->utype === 'ADM')
+                                    <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <div class="avatar-header"><img src="assets/img/logo/avatar.jpg"></div> My Account ({{Auth::user()->name}}) </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="transaction.html">Transactions History</a>
+                                        <a class="dropdown-item" href="{{ route('admin.settings') }}">Settings</a> 
+                                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a> 
+                                        
+                                        <form id="logout-form" method="POST" action="{{route('logout')}}"> 
+                                        @csrf 
+                                        </form> 
+                                    </div>
+                                    </li>
+                                @else
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <div class="avatar-header"><img src="assets/img/logo/avatar.jpg"></div> My Account ({{Auth::user()->name}}) </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="transaction.html">Transactions History</a>
+                                            <a class="dropdown-item" href="{{ route('user.settings') }}">Settings</a>
+                                            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a> 
+                                             
+                                            <form id="logout-form" method="POST" action="{{route('logout')}}"> 
+                                            @csrf 
+                                            </form> 
+                                        </div>
+                                        </li>
+                                @endif
+
+                            @else
+
+                                <li class="nav-item">
+                                <a href="{{route('register') }}" class="nav-link">Register</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{route('login')}}" class="nav-link">Login</a>
+                                </li>
+                            @endif
+
+                       @endif
                     </ul>
                 </div>
 
