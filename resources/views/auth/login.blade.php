@@ -19,12 +19,12 @@
                                 @csrf
                                 <div class="form-group row mt-3">
                                     <div class="col-md-12">
-                                        <input class="form-control" type="email" name="email" :value="old('email')" required autofocus>
+                                        <input class="form-control" type="email" placeholder="Email" name="email" :value="old('email')" required autofocus>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-md-12">
-                                        <input class="form-control" type="password"  name="password" required autocomplete="current-password">
+                                        <input class="form-control" type="password" placeholder="Password" name="password" required autocomplete="current-password">
                                     </div>
                                 </div>
                                 <div class="form-group row">

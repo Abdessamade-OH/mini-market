@@ -39,8 +39,7 @@
     <link rel="stylesheet" type="text/css" media="all" href="{{ asset('assets/packages/thumbelina/thumbelina.css') }}">
     <link rel="stylesheet" type="text/css" media="all" href="{{ asset('assets/packages/bootstrap-touchspin/bootstrap-touchspin.css') }}">
     <link rel="stylesheet" type="text/css" media="all" href="{{ asset('assets/css/theme.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-        <script src="{{ asset('js/app.js') }}" defer></script>
+    
     @livewireStyles
 </head>
 <body>
