@@ -1,6 +1,9 @@
 <?php
 
-
+use App\Http\Livewire\AboutComponent;
+use App\Http\Livewire\FaqComponent;
+use App\Http\Livewire\TermsComponent;
+use App\Http\Livewire\PrivacyComponent;
 use App\Http\Livewire\Admin\AdminSettingsComponent;
 use App\Http\Livewire\User\UserSettingsComponent;
 use App\Http\Livewire\HomeComponent;
@@ -24,6 +27,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',HomeComponent::class);
 Route::get('/shop',ShopComponent::class);
+Route::get('/about',AboutComponent::class);
+Route::get('/faq',FaqComponent::class);
+Route::get('/terms',TermsComponent::class);
+Route::get('/privacy',PrivacyComponent::class);
 
 // Route::middleware([
 //     'auth:sanctum',
