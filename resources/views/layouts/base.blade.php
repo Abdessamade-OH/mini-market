@@ -172,22 +172,20 @@
                     <h5>Links</h5>
                     <ul>
                         <li>
-                            <a href="about.html">About</a>
+                            <a href="/about">About</a>
                         </li>
                         <li>
                             <a href="contact.html">Contact Us</a>
                         </li>
                         <li>
-                            <a href="faq.html">FAQ</a>
+                            <a href="/faq">FAQ</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/terms">Terms</a>
                         </li>
                         <li>
-                            <a href="javascript:void(0)">How it Works</a>
-                        </li>
-                        <li>
-                            <a href="terms.html">Terms</a>
-                        </li>
-                        <li>
-                            <a href="privacy.html">Privacy Policy</a>
+                            <a href="/privacy">Privacy Policy</a>
                         </li>
                     </ul>
                 </div>
