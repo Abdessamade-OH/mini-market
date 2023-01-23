@@ -21,6 +21,7 @@ class CreateProduitsTable extends Migration
             $table->foreignId('categorie_id')->constrained()->onDelete('cascade');
             //le clé etrangé içi pour les categoies, on utilise constained()
             //pour etablir la relation entre les deux tables.
+            $table->string('image_path');
             $table->integer('stock');
             $table->timestamps();
         });

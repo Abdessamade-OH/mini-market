@@ -9,11 +9,13 @@ class Categorie extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['id', 'name', 'description'];
+    
     public function produits(){
         return $this->hasMany(Produit::class);
     }
 
-    public function image(){
+    /* public function image(){
         return $this->morphOne(Image::class, 'imageable');
-    }
+    } */
 }

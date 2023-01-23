@@ -9,11 +9,10 @@ class Produit extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id', 'created_at', ' updated_at'];
+
     public function categorie(){
         return $this->belongsTo(Categorie::class);
     }
 
-    public function image(){
-        return $this->morphOne(Image::class, 'imageable');
-    }
 }
