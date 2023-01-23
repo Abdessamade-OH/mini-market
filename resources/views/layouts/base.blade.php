@@ -40,7 +40,7 @@
                             <a href="/shop" class="nav-link">Shop</a>
                         </li>
 
-                        
+                        @auth
                         <li class="nav-item dropdown">
                             <a href="javascript:void(0)" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-shopping-basket"></i> <span class="badge badge-primary">5</span>
@@ -111,6 +111,7 @@
                                 </ul>
                             </div>
                         </li>
+                        @endauth
                        @if(Route::has('login')) 
                             @auth
                                 @if(Auth::user()->utype === 'ADM')
