@@ -9,6 +9,7 @@ use App\Http\Livewire\Admin\AdminSettingsComponent;
 use App\Http\Livewire\User\UserSettingsComponent;
 use App\Http\Livewire\HomeComponent;
 use App\Http\Livewire\ShopComponent;
+use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -53,4 +54,6 @@ Route::middleware(['auth:sanctum','verified'])->group(function(){
     Route::get('/admin/settings',AdminSettingsComponent::class)->name('admin.settings');
 });
 
-Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+Route::middleware('admin')->group(function(){
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+});
