@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ProductController;
 use App\Http\Livewire\AboutComponent;
 use App\Http\Livewire\FaqComponent;
 use App\Http\Livewire\TermsComponent;
@@ -56,4 +57,7 @@ Route::middleware(['auth:sanctum','verified'])->group(function(){
 
 Route::middleware('admin')->group(function(){
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+
 });
+
+Route::resource('products', ProductController::class);
