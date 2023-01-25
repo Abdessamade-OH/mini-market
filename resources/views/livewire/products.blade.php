@@ -82,4 +82,26 @@
     <div class="mt-4">
         {{$products->links()}} {{-- we use pagination to show data in different pages --}}
     </div>
+
+    <x-jet-dialog-modal wire:model="confirmingProductDeletion">
+        <x-slot name="title">
+            {{ __('Delete Product') }}
+        </x-slot>
+
+        <x-slot name="content">
+            {{ __('Are you sure you want to delete this product?') }}
+
+        </x-slot>
+
+        <x-slot name="footer">
+            {{-- on cancel, make the flag false again --}}
+            <x-jet-secondary-button wire:click="$set('confirmingProductDeletion', false)" wire:loading.attr="disabled">
+                {{ __('Cancel') }}
+            </x-jet-secondary-button>
+            {{-- the flag holds in the product id --}}
+            <x-jet-danger-button class="ml-3" wire:click="deleteProduct({{$confirmingProductDeletion}})" wire:loading.attr="disabled">
+                {{ __('Delete Product') }}
+            </x-jet-danger-button>
+        </x-slot>
+    </x-jet-dialog-modal>
 </div>

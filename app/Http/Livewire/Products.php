@@ -16,6 +16,9 @@ class Products extends Component
     public $category='all';
     public $sortBy = 'id';
     public $sortAsc = true;
+    public $product;
+
+    public $confirmingProductDeletion = false;
 
     protected $queryString = [
         'expensive' => ['except' => false],
@@ -24,6 +27,10 @@ class Products extends Component
         'sortAsc' => ['except' => true],
         
         //we do the except to only show the query strings when they are used
+    ];
+
+    protected $rules = [
+        'product.name' => 'required', 
     ];
     
     public function render()
@@ -88,8 +95,15 @@ class Products extends Component
         //all this function does is specify the field which we'll order with 
     }
 
-    public function confirmProductDeletion(Product $product)
+    public function confirmProductDeletion($id)
+    {
+        $this->confirmingProductDeletion = $id;
+        //$product->delete();
+    }
+
+    public function deleteProduct(Product $product) //model binding (we passed in the id)
     {
         $product->delete();
+        $this->confirmingProductDeletion = false;
     }
 }
