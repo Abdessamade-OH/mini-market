@@ -15,4 +15,10 @@ class Product extends Model
         return $this->belongsTo(Categorie::class);
     }
 
+    public function scopeExpensive($query)
+    {
+        return $query->where('prix', '>=', 50);
+    }
+
+    
 }
