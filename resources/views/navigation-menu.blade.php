@@ -150,7 +150,7 @@
             <x-jet-responsive-nav-link href="{{ route('products.index') }}" :active="request()->routeIs('products.index')">
                 {{ __('Products') }}
             </x-jet-responsive-nav-link>
-        </div>
+        </div> 
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">

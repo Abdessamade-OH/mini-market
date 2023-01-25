@@ -53,11 +53,13 @@ Route::middleware(['auth:sanctum','verified'])->group(function(){
 //for Admin
 Route::middleware(['auth:sanctum','verified'])->group(function(){
     Route::get('/admin/settings',AdminSettingsComponent::class)->name('admin.settings');
+
+    
+    
+    Route::resource('products', ProductController::class);
 });
 
 Route::middleware('admin')->group(function(){
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 
 });
-
-Route::resource('products', ProductController::class);
