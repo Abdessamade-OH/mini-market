@@ -14,16 +14,21 @@ class Products extends Component
     public $expensive;
     public $q;
     public $category='all';
+    public $sortBy = 'id';
+    public $sortAsc = true;
 
     protected $queryString = [
         'expensive' => ['except' => false],
-        'q' => ['except' => '']
-
+        'q' => ['except' => ''],
+        'sortBy' => ['except' => 'id'],
+        'sortAsc' => ['except' => true],
+        
         //we do the except to only show the query strings when they are used
     ];
     
     public function render()
     {
+         
         $products = Product::where('id', '!=', 0)
             ->when($this->q, function($query){
                 return $query->where(function($query){
@@ -41,7 +46,8 @@ class Products extends Component
                 {
                     return $query->where('categorie_id', $this->category);
                 }
-            });
+            })
+            ->orderBy( $this->sortBy, $this->sortAsc ? 'ASC' : 'DESC');
             
         $query = $products->toSql();
         $products = $products->paginate(10);
@@ -51,7 +57,7 @@ class Products extends Component
         return view('livewire.products', [
             'products' => $products,
             'query' => $query,
-            'categories' => $categories
+            'categories' => $categories,
         ]);
     }
 
@@ -69,5 +75,16 @@ class Products extends Component
     public function updatingCategory()
     {
         $this->resetPage();
+    }
+
+    public function sortBy($field)
+    {
+
+        if($field == $this->sortBy){
+            $this->sortAsc = !$this->sortAsc;
+        }
+        $this->sortBy = $field;
+
+        //all this function does is specify the field which we'll order with 
     }
 }

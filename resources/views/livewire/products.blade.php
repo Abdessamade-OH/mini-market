@@ -27,16 +27,68 @@
             <thead>
                 <tr>
                     <th class="px-4 py-2"> {{-- padding x of 4 --}}
-                        <div class="flex items-center">ID</div>
+                        <div class="flex items-center">
+                            <button wire:click="sortBy('id')">ID</button>
+                            @if($sortBy==='id')
+                                @if($sortAsc)
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+                                    </svg>
+                                @else
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                    </svg>
+                                @endif
+                            @endif
+                        </div>
                     </th>
                     <th class="px-4 py-2"> {{-- padding x of 4 --}}
-                        <div class="flex items-center">Name</div>
+                        <div class="flex items-center">
+                            <button wire:click="sortBy('name')">Name</button>
+                            @if($sortBy==='name')
+                                @if($sortAsc)
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+                                    </svg>
+                                @else
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                    </svg>
+                                @endif
+                            @endif
+                        </div>
                     </th>
                     <th class="px-4 py-2"> {{-- padding x of 4 --}}
-                        <div class="flex items-center">Price</div>
+                        <div class="flex items-center">
+                            <button wire:click="sortBy('prix')">Price</button>
+                            @if($sortBy==='prix')
+                                @if($sortAsc)
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+                                    </svg>
+                                @else
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                    </svg>
+                                @endif
+                            @endif
+                        </div>
                     </th>
                     <th class="px-4 py-2"> {{-- padding x of 4 --}}
-                        <div class="flex items-center">Stock</div>
+                        <div class="flex items-center">
+                            <button wire:click="sortBy('stock')">Stock</button>
+                            @if($sortBy==='stock')
+                                @if($sortAsc)
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+                                    </svg>
+                                @else
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                    </svg>
+                                @endif
+                            @endif
+                        </div>
                     </th>
                     @if($category === 'all')
                         <th class="px-4 py-2"> {{-- padding x of 4 --}}
