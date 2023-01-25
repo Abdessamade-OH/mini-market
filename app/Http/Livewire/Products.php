@@ -87,4 +87,9 @@ class Products extends Component
 
         //all this function does is specify the field which we'll order with 
     }
+
+    public function confirmProductDeletion(Product $product)
+    {
+        $product->delete();
+    }
 }

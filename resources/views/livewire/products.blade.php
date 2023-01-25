@@ -1,9 +1,6 @@
 <div class="p-6 sm:px-20 bg-white border-b border-gray-200">
-    <div class="mt-8 text-2xl">
-        Products
-    </div>
-    {{$query}}
-    <div class="mt-6"> {{-- margin top of 6 --}}
+    
+    <div class="mt-2"> {{-- margin top of 6 --}}
         <div class="flex justify-between">
             <div>
                 <input wire:model.debounce.200ms="q" type="search" placeholder="search" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
@@ -29,65 +26,25 @@
                     <th class="px-4 py-2"> {{-- padding x of 4 --}}
                         <div class="flex items-center">
                             <button wire:click="sortBy('id')">ID</button>
-                            @if($sortBy==='id')
-                                @if($sortAsc)
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
-                                    </svg>
-                                @else
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                                    </svg>
-                                @endif
-                            @endif
+                            <x-sort-icon sortField="id" :sort-by="$sortBy" :sort-asc="$sortAsc" />
                         </div>
                     </th>
                     <th class="px-4 py-2"> {{-- padding x of 4 --}}
                         <div class="flex items-center">
                             <button wire:click="sortBy('name')">Name</button>
-                            @if($sortBy==='name')
-                                @if($sortAsc)
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
-                                    </svg>
-                                @else
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                                    </svg>
-                                @endif
-                            @endif
+                            <x-sort-icon sortField="name" :sort-by="$sortBy" :sort-asc="$sortAsc" />
                         </div>
                     </th>
                     <th class="px-4 py-2"> {{-- padding x of 4 --}}
                         <div class="flex items-center">
                             <button wire:click="sortBy('prix')">Price</button>
-                            @if($sortBy==='prix')
-                                @if($sortAsc)
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
-                                    </svg>
-                                @else
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                                    </svg>
-                                @endif
-                            @endif
+                            <x-sort-icon sortField="prix" :sort-by="$sortBy" :sort-asc="$sortAsc" />
                         </div>
                     </th>
                     <th class="px-4 py-2"> {{-- padding x of 4 --}}
                         <div class="flex items-center">
                             <button wire:click="sortBy('stock')">Stock</button>
-                            @if($sortBy==='stock')
-                                @if($sortAsc)
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
-                                    </svg>
-                                @else
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                                    </svg>
-                                @endif
-                            @endif
+                            <x-sort-icon sortField="stock" :sort-by="$sortBy" :sort-asc="$sortAsc" />
                         </div>
                     </th>
                     @if($category === 'all')
@@ -110,7 +67,12 @@
                         @if($category === 'all')
                             <td class="border px-4 py-2">{{$product->categorie->name}}</td>
                         @endif
-                        <td class="border px-4 py-2">Edit | Delete</td>
+                        <td class="border px-4 py-2">
+                            Edit
+                            <x-jet-danger-button wire:click="confirmProductDeletion({{$product->id}})" wire:loading.attr="disabled">
+                                {{ __('Delete') }}
+                            </x-jet-danger-button>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
