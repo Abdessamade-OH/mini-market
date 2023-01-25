@@ -13,7 +13,9 @@ class Products extends Component
     public function render()
     {
         $products = Product::where('categorie_id', 62)
-            ->paginate(10); 
-        return view('livewire.products');
+            ->paginate(10);
+        return view('livewire.products', [
+            'products' => $products
+        ]);
     }
 }
