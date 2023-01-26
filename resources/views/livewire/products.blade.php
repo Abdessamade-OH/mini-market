@@ -142,6 +142,7 @@
             {{-- category --}}
             <x-jet-label for="cat_id" value="{{ __('Category') }}" />
             <select id="cat-id" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full" wire:model.defer="product.category">
+                <option value="" selected>Choose here</option>
                 @foreach ($categories as $cat)
                     <option value="{{$cat->id}}">
                         {{$cat->name}}

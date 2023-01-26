@@ -112,6 +112,7 @@ class Products extends Component
 
     public function confirmProductAdd() 
     {
+        $this->reset(['product']);
         $this->confirmingProductAdd = true;
     }
 
