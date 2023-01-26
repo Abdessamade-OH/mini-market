@@ -20,12 +20,14 @@ class Products extends Component
 
     public $confirmingProductDeletion = false;
     public $confirmingProductAdd = false;
+    public $confirmingProductEdit = false;
 
     protected $queryString = [
         'expensive' => ['except' => false],
         'q' => ['except' => ''],
         'sortBy' => ['except' => 'id'],
         'sortAsc' => ['except' => true],
+        'category' => ['except' => 'all']
         
         //we do the except to only show the query strings when they are used
     ];
@@ -33,9 +35,9 @@ class Products extends Component
     protected $rules = [
         'product.name' => 'required|string|min:3',
         'product.description' => 'required|string|min:10',
-        'product.price' => 'required|numeric|between:0.05,1000000',
+        'product.prix' => 'required|numeric|between:0.05,1000000',
         'product.stock' => 'required|numeric|between:1,500',
-        'product.category' => 'required|numeric' 
+        'product.categorie_id' => 'required|numeric' 
     ];
     
     public function render()
@@ -116,18 +118,29 @@ class Products extends Component
         $this->confirmingProductAdd = true;
     }
 
+    public function confirmProductEdit(Product $product) 
+    {
+        $this->product = $product;
+        $this->confirmingProductAdd = true;
+    }
+
     public function saveProduct()
     {
         $this->validate();
-
-        Product::create([
-            'name' => $this->product['name'],
-            'description' => $this->product['description'],
-            'prix' => $this->product['price'],
-            'stock' => $this->product['stock'],
-            'categorie_id' => $this->product['category'],
-        ]);
-
+        if(isset($this->product->id))
+        {
+            $this->product->save();
+        }
+        else
+        {
+            Product::create([
+                'name' => $this->product['name'],
+                'description' => $this->product['description'],
+                'prix' => $this->product['price'],
+                'stock' => $this->product['stock'],
+                'categorie_id' => $this->product['category'],
+            ]);
+        }   
         $this->confirmingProductAdd = false;
     }
 }

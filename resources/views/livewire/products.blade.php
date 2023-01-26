@@ -77,7 +77,9 @@
                             <td class="border px-4 py-2">{{$product->categorie->name}}</td>
                         @endif
                         <td class="border px-4 py-2">
-                            Edit
+                            <x-jet-button wire:click="confirmProductEdit({{$product->id}})" class="bg-orange-500 hover:bg-orange-700">
+                                Edit
+                            </x-jet-button>
                             <x-jet-danger-button wire:click="confirmProductDeletion({{$product->id}})" wire:loading.attr="disabled">
                                 {{ __('Delete') }}
                             </x-jet-danger-button>
@@ -118,11 +120,10 @@
     {{-- adding a new product --}}
     <x-jet-dialog-modal wire:model="confirmingProductAdd">
         <x-slot name="title">
-            {{ __('Add Product') }}
+            {{ isset( $this->product->id) ? 'Edit product' : 'Add product' }}
         </x-slot>
 
         <x-slot name="content">
-            {{ __('Form') }}
             {{-- name --}}
             <x-jet-label for="name" value="{{ __('Name') }}" />
             <x-jet-input id="name" type="text" class="mt-1 block w-full" wire:model.defer="product.name" />
@@ -133,15 +134,15 @@
             <x-jet-input-error for="product.description" class="mt-2" />
             {{-- price --}}
             <x-jet-label for="price" value="{{ __('Price') }}" />
-            <x-jet-input id="price" type="number" min="0" class="mt-1 block w-full" wire:model.defer="product.price" />
-            <x-jet-input-error for="product.price" class="mt-2" />
+            <x-jet-input id="price" type="number" min="0" class="mt-1 block w-full" wire:model.defer="product.prix" />
+            <x-jet-input-error for="product.prix" class="mt-2" />
             {{-- stock --}}
             <x-jet-label for="stock" value="{{ __('Stock') }}" />
             <x-jet-input id="stock" type="number" min="0" class="mt-1 block w-full" wire:model.defer="product.stock" />
             <x-jet-input-error for="product.stock" class="mt-2" />
             {{-- category --}}
             <x-jet-label for="cat_id" value="{{ __('Category') }}" />
-            <select id="cat-id" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full" wire:model.defer="product.category">
+            <select id="cat-id" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full" wire:model.defer="product.categorie_id">
                 <option value="" selected>Choose here</option>
                 @foreach ($categories as $cat)
                     <option value="{{$cat->id}}">
@@ -149,7 +150,7 @@
                     </option>
                 @endforeach
             </select>
-            <x-jet-input-error for="product.category" class="mt-2" />
+            <x-jet-input-error for="product.categorie_id" class="mt-2" />
         </x-slot>
 
         <x-slot name="footer">
@@ -158,7 +159,7 @@
                 {{ __('Cancel') }}
             </x-jet-secondary-button>
             {{-- the flag holds in the product id --}}
-            <x-jet-danger-button class="ml-3" wire:click="saveProduct()" wire:loading.attr="disabled">
+            <x-jet-danger-button class="ml-3 bg-green-500 hover:bg-green-700" wire:click="saveProduct()" wire:loading.attr="disabled">
                 {{ __('Save') }}
             </x-jet-danger-button>
         </x-slot>
