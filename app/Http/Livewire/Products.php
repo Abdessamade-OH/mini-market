@@ -19,6 +19,7 @@ class Products extends Component
     public $product;
 
     public $confirmingProductDeletion = false;
+    public $confirmingProductAdd = false;
 
     protected $queryString = [
         'expensive' => ['except' => false],
@@ -30,7 +31,11 @@ class Products extends Component
     ];
 
     protected $rules = [
-        'product.name' => 'required', 
+        'product.name' => 'required|string|min:3',
+        'product.description' => 'required|string|min:10',
+        'product.price' => 'required|numeric|between:0.05,1000000',
+        'product.stock' => 'required|numeric|between:1,500',
+        'product.category' => 'required|numeric' 
     ];
     
     public function render()
@@ -56,14 +61,12 @@ class Products extends Component
             })
             ->orderBy( $this->sortBy, $this->sortAsc ? 'ASC' : 'DESC');
             
-        $query = $products->toSql();
         $products = $products->paginate(10);
 
         $categories = Categorie::all();
 
         return view('livewire.products', [
             'products' => $products,
-            'query' => $query,
             'categories' => $categories,
         ]);
     }
@@ -105,5 +108,25 @@ class Products extends Component
     {
         $product->delete();
         $this->confirmingProductDeletion = false;
+    }
+
+    public function confirmProductAdd() 
+    {
+        $this->confirmingProductAdd = true;
+    }
+
+    public function saveProduct()
+    {
+        $this->validate();
+
+        Product::create([
+            'name' => $this->product['name'],
+            'description' => $this->product['description'],
+            'prix' => $this->product['price'],
+            'stock' => $this->product['stock'],
+            'categorie_id' => $this->product['category'],
+        ]);
+
+        $this->confirmingProductAdd = false;
     }
 }

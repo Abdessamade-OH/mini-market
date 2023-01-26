@@ -15,8 +15,11 @@ module.exports = {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                'regal-blue': '#243c5a',
+            },
         },
     },
-
+        
     plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
 };
