@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Storage;
 
 class CreateProductsTable extends Migration
 {
@@ -21,7 +22,8 @@ class CreateProductsTable extends Migration
             $table->foreignId('categorie_id')->constrained()->onDelete('cascade');
             //le clé etrangé içi pour les categoies, on utilise constained()
             //pour etablir la relation entre les deux tables.
-            $table->string('image_path');
+            $path = Storage::url('defaultImage.png');
+            $table->string('image_path')->default($path);
             $table->integer('stock');
             $table->timestamps();
         });
