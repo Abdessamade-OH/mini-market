@@ -11,7 +11,7 @@ class Products extends Component
 {
     use WithPagination;
 
-    public $expensive;
+    public $onStock;
     public $q;
     public $category='all';
     public $sortBy = 'id';
@@ -23,7 +23,7 @@ class Products extends Component
     public $confirmingProductEdit = false;
 
     protected $queryString = [
-        'expensive' => ['except' => false],
+        'onStock' => ['except' => false],
         'q' => ['except' => ''],
         'sortBy' => ['except' => 'id'],
         'sortAsc' => ['except' => true],
@@ -36,7 +36,7 @@ class Products extends Component
         'product.name' => 'required|string|min:3',
         'product.description' => 'required|string|min:10',
         'product.prix' => 'required|numeric|between:0.05,1000000',
-        'product.stock' => 'required|numeric|between:1,500',
+        'product.stock' => 'required|numeric|between:0,500',
         'product.categorie_id' => 'required|numeric' 
     ];
     
@@ -50,8 +50,8 @@ class Products extends Component
                         ->orWhere('prix', 'like', '%'. $this->q . '%');
                 });
             })
-            ->when($this->expensive, function( $query ){
-                return $query->expensive();
+            ->when($this->onStock, function( $query ){
+                return $query->onStock();
             })->when($this->category, function($query){
                 if($this->category === 'all'){
                     return $query;
@@ -74,7 +74,7 @@ class Products extends Component
     }
 
     //updates the pagination when the expensive model is checked
-    public function updatingExpensive()
+    public function updatingOnStock()
     {
         $this->resetPage();
     }
@@ -110,6 +110,9 @@ class Products extends Component
     {
         $product->delete();
         $this->confirmingProductDeletion = false;
+        $this->resetPage();
+        session()->flash('message', 'product Deleted successfully');
+        
     }
 
     public function confirmProductAdd() 
@@ -130,16 +133,18 @@ class Products extends Component
         if(isset($this->product->id))
         {
             $this->product->save();
+            session()->flash('message', 'product Saved successfully');
         }
         else
         {
             Product::create([
                 'name' => $this->product['name'],
                 'description' => $this->product['description'],
-                'prix' => $this->product['price'],
+                'prix' => $this->product['prix'],
                 'stock' => $this->product['stock'],
-                'categorie_id' => $this->product['category'],
+                'categorie_id' => $this->product['categorie_id'],
             ]);
+            session()->flash('message', 'product Added successfully');
         }   
         $this->confirmingProductAdd = false;
     }

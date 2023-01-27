@@ -16,9 +16,28 @@
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
                 </div>
+                {{-- Products --}}
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('products.index') }}" :active="request()->routeIs('products.index')">
                         {{ __('Products') }}
+                    </x-jet-nav-link>
+                </div>
+                {{-- Categories --}}
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ route('categories') }}" :active="request()->routeIs('categories')">
+                        {{ __('Categories') }}
+                    </x-jet-nav-link>
+                </div>
+                {{-- Clients --}}
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ route('clients') }}" :active="request()->routeIs('clients')">
+                        {{ __('Clients') }}
+                    </x-jet-nav-link>
+                </div>
+                {{-- Commands --}}
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ route('commands') }}" :active="request()->routeIs('commands')">
+                        {{ __('Commands') }}
                     </x-jet-nav-link>
                 </div>
             </div>
@@ -146,11 +165,31 @@
                 {{ __('Dashboard') }}
             </x-jet-responsive-nav-link>
         </div>
+        {{-- Products --}}
         <div class="pt-2 pb-3 space-y-1">
             <x-jet-responsive-nav-link href="{{ route('products.index') }}" :active="request()->routeIs('products.index')">
                 {{ __('Products') }}
             </x-jet-responsive-nav-link>
+        </div>
+        {{-- Categories --}}
+        <div class="pt-2 pb-3 space-y-1">
+            <x-jet-responsive-nav-link href="{{ route('categories') }}" :active="request()->routeIs('categories')">
+                {{ __('Categories') }}
+            </x-jet-responsive-nav-link>
+        </div>
+        {{-- clients --}}
+        <div class="pt-2 pb-3 space-y-1">
+            <x-jet-responsive-nav-link href="{{ route('clients') }}" :active="request()->routeIs('clients')">
+                {{ __('Clients') }}
+            </x-jet-responsive-nav-link>
         </div> 
+        {{-- Commands --}}
+        <div class="pt-2 pb-3 space-y-1">
+            <x-jet-responsive-nav-link href="{{ route('commands') }}" :active="request()->routeIs('commands')">
+                {{ __('Commands') }}
+            </x-jet-responsive-nav-link>
+        </div> 
+
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">

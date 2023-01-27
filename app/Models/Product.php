@@ -15,9 +15,9 @@ class Product extends Model
         return $this->belongsTo(Categorie::class);
     }
 
-    public function scopeExpensive($query)
+    public function scopeOnStock($query)
     {
-        return $query->where('prix', '>=', 50);
+        return $query->where('stock', '>', 0);
     }
 
     

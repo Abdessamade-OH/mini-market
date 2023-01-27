@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategorieController;
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\CommandController;
 use App\Http\Controllers\ProductController;
 use App\Http\Livewire\AboutComponent;
 use App\Http\Livewire\FaqComponent;
@@ -54,12 +57,12 @@ Route::middleware(['auth:sanctum','verified'])->group(function(){
 Route::middleware(['auth:sanctum','verified'])->group(function(){
     Route::get('/admin/settings',AdminSettingsComponent::class)->name('admin.settings');
 
-    
-    
-    Route::resource('products', ProductController::class);
 });
 
 Route::middleware('admin')->group(function(){
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
-
+    Route::resource('products', ProductController::class);
+    Route::get('/categories', [CategorieController::class, 'index'])->name('categories');
+    Route::get('/clients', [ClientController::class, 'index'])->name('clients');
+    Route::get('/commands', [CommandController::class, 'index'])->name('commands');
 });
