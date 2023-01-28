@@ -136,7 +136,18 @@ class Products extends Component
         $this->validate();
         if(isset($this->product->id))
         {
-            
+            if(isset($this->photo))
+            {
+                $this->validate([
+                    'photo' => 'image|max:1024', // 1MB Max
+                ]);
+         
+                Storage::delete($this->product->image_path);
+
+                $path = $this->photo->store('/public/products-photos');
+                
+                $this->product->image_path = $path;
+            }
             $this->product->save();
             //dd($this->product);
             session()->flash('message', 'product Saved successfully');
@@ -156,7 +167,7 @@ class Products extends Component
                     'photo' => 'image|max:1024', // 1MB Max
                 ]);
          
-                $path = $this->photo->store('products-photos');
+                $path = $this->photo->store('/public/products-photos');
                 
                 $product->image_path = $path;
             }
