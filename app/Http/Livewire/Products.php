@@ -141,12 +141,15 @@ class Products extends Component
                 $this->validate([
                     'photo' => 'image|max:1024', // 1MB Max
                 ]);
-         
-                Storage::delete($this->product->image_path);
-
-                $path = $this->photo->store('/public/products-photos');
                 
-                $this->product->image_path = $path;
+                if($this->product->image_path !== '/storage/defaultImage.png')
+                {
+                    Storage::delete($this->product->image_path);
+
+                    $path = $this->photo->store('/public/products-photos');
+                    
+                    $this->product->image_path = $path;
+                }
             }
             $this->product->save();
             //dd($this->product);
