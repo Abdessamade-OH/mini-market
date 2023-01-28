@@ -4,12 +4,15 @@ namespace App\Http\Livewire;
 
 use App\Models\Categorie;
 use App\Models\Product;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 use Livewire\WithPagination;
 
 class Products extends Component
 {
     use WithPagination;
+    use WithFileUploads;
 
     public $onStock;
     public $q;
@@ -17,6 +20,7 @@ class Products extends Component
     public $sortBy = 'id';
     public $sortAsc = true;
     public $product;
+    public $photo;
 
     public $confirmingProductDeletion = false;
     public $confirmingProductAdd = false;
@@ -37,7 +41,8 @@ class Products extends Component
         'product.description' => 'required|string|min:10',
         'product.prix' => 'required|numeric|between:0.05,1000000',
         'product.stock' => 'required|numeric|between:0,500',
-        'product.categorie_id' => 'required|numeric' 
+        'product.categorie_id' => 'required|numeric',
+        'product.image_path' => ''
     ];
     
     public function render()
@@ -110,9 +115,8 @@ class Products extends Component
     {
         $product->delete();
         $this->confirmingProductDeletion = false;
-        $this->resetPage();
         session()->flash('message', 'product Deleted successfully');
-        
+        $this->resetPage();
     }
 
     public function confirmProductAdd() 
@@ -132,19 +136,41 @@ class Products extends Component
         $this->validate();
         if(isset($this->product->id))
         {
+            
             $this->product->save();
-            dd($this->product);
+            //dd($this->product);
             session()->flash('message', 'product Saved successfully');
         }
         else
         {
-            Product::create([
+            $product = new Product();
+            $product->name = $this->product['name'];
+            $product->description = $this->product['description'];
+            $product->prix = $this->product['prix'];
+            $product->stock = $this->product['stock'];
+            $product->categorie_id = $this->product['categorie_id'];
+
+            if(isset($this->photo))
+            {
+                $this->validate([
+                    'photo' => 'image|max:1024', // 1MB Max
+                ]);
+         
+                $path = $this->photo->store('products-photos');
+                
+                $product->image_path = $path;
+            }
+
+            $product->save();
+            
+
+            /*Product::create([
                 'name' => $this->product['name'],
                 'description' => $this->product['description'],
                 'prix' => $this->product['prix'],
                 'stock' => $this->product['stock'],
                 'categorie_id' => $this->product['categorie_id'],
-            ]);
+            ]);*/
             session()->flash('message', 'product Added successfully');
         }   
         $this->confirmingProductAdd = false;
