@@ -105,7 +105,7 @@
                                         </div>
                                     </li>
                                     <li class="d-flex justify-content-between pl-3 pr-3 pt-3">
-                                        <a href="cart.html" class="btn btn-secondary">View Cart</a>
+                                        
                                         <a href="checkout.html" class="btn btn-primary">Checkout</a>
                                     </li>
                                 </ul>
@@ -119,7 +119,7 @@
                                     <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <div class="avatar-header"><img src="assets/img/logo/avatar.jpg"></div> My Account ({{Auth::user()->name}}) </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="transaction.html">Transactions History</a>
+                                        
                                         <a class="dropdown-item" href="{{ url('user/profile') }}">Settings</a> 
                                         <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a> 
                                         
@@ -133,7 +133,7 @@
                                         <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <div class="avatar-header"><img src="assets/img/logo/avatar.jpg"></div> My Account ({{Auth::user()->name}}) </a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <a class="dropdown-item" href="transaction.html">Transactions History</a>
+                                            
                                             <a class="dropdown-item" href="{{ url('/user/profile') }}">Settings</a>
                                             <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a> 
                                              
