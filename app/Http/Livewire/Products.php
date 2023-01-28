@@ -113,6 +113,10 @@ class Products extends Component
 
     public function deleteProduct(Product $product) //model binding (we passed in the id)
     {
+        if($product->image_path !== '/storage/defaultImage.png')
+        {
+            Storage::delete($product->image_path);
+        }
         $product->delete();
         $this->confirmingProductDeletion = false;
         session()->flash('message', 'product Deleted successfully');
