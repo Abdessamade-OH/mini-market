@@ -87,8 +87,8 @@
                         @if($category === 'all')
                             <td class="border px-4 py-2">{{$product->categorie->name}}</td>
                         @endif
-                        <td class="border px-4 py-2 flex justify-between">
-                            <x-jet-button wire:click="confirmProductEdit({{$product->id}})" class="bg-orange-500 hover:bg-orange-700">
+                        <td class="border px-4 py-2 flex justify-center">
+                            <x-jet-button wire:click="confirmProductEdit({{$product->id}})" class="mr-6 bg-orange-500 hover:bg-orange-700">
                                 Edit
                             </x-jet-button>
                             <x-jet-danger-button wire:click="confirmProductDeletion({{$product->id}})" wire:loading.attr="disabled">

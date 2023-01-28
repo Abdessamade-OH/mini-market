@@ -21,16 +21,36 @@
         <x-jet-banner />
 
         <div class="min-h-screen bg-gray-100">
-            @livewire('navigation-menu')
-
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
+        @auth
+            @if(Auth::user()->utype === 'ADM')
+                @livewire('navigation-menu')
             @endif
+        @endauth
+            <!-- Page Heading -->
+            
+                    @if (isset($header))
+                        <header class="bg-white shadow">
+                            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex flex-row justify-between">
+                                {{ $header }}
+                                @auth
+                                    @if(Auth::user()->utype === 'USR')
+                                        <div class="flex flex-row">
+                                            <a href="{{ url('/') }}" class="mr-6">
+                                                <img src="{{ asset('assets/img/logo/logo.png') }}" alt="" width="65" height="55">
+                                            </a>
+
+                                            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a> 
+                                            <form id="logout-form" method="POST" action="{{route('logout')}}">
+                                            @csrf 
+                                            </form> 
+                                            
+                                        </div>
+                                    @endif
+                                @endauth  
+                            </div>
+                        </header>
+                    @endif
+                
 
             <!-- Page Content -->
             <main>

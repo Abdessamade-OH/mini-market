@@ -58,7 +58,7 @@ class Products extends Component
                 }
                 else
                 {
-                    return $query->where('categorie_id', $this->category);
+                    return $query->where('categorie_id', '=', $this->category);
                 }
             })
             ->orderBy( $this->sortBy, $this->sortAsc ? 'ASC' : 'DESC');
@@ -133,6 +133,7 @@ class Products extends Component
         if(isset($this->product->id))
         {
             $this->product->save();
+            dd($this->product);
             session()->flash('message', 'product Saved successfully');
         }
         else

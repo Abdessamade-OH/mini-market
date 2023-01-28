@@ -17,8 +17,9 @@ class CreateCategoriesTable extends Migration
             $table->id();
             $table->string('name');
             $table->mediumText('description');
-            $table->string('icon_class'); //au cas où on travaille pas avec les images
-                                          //sinon on peut effacer ce colonne.
+            $table->string('icon_class')->default('fa-thin fa-can-food');
+            //au cas où on travaille pas avec les images
+            //sinon on peut effacer ce colonne.
             $table->timestamps();
         });
     }

@@ -52,8 +52,8 @@
                     <tr>
                         <td class="border px-4 py-2">{{$cat->id}}</td>
                         <td class="border px-4 py-2">{{$cat->name}}</td>
-                        <td class="border px-4 py-2 flex justify-between">
-                            <x-jet-button wire:click="confirmCategoryEdit({{$cat->id}})" class="bg-orange-500 hover:bg-orange-700">
+                        <td class="border px-4 py-2 flex justify-center">
+                            <x-jet-button wire:click="confirmCategoryEdit({{$cat->id}})" class="mr-6 bg-orange-500 hover:bg-orange-700">
                                 Edit
                             </x-jet-button>
                             <x-jet-danger-button wire:click="confirmCategoryDeletion({{$cat->id}})" wire:loading.attr="disabled">
@@ -108,6 +108,10 @@
             <x-jet-label for="desc" value="{{ __('Description') }}" />
             <textarea id="desc" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full" wire:model.defer="category.description" ></textarea>
             <x-jet-input-error for="category.description" class="mt-2" />
+            {{-- name --}}
+            <x-jet-label for="icon" value="{{ __('Icon') }}" />
+            <x-jet-input id="icon" type="text" class="mt-1 block w-full" wire:model.defer="category.icon_class" />
+            <x-jet-input-error for="category.icon_class" class="mt-2" />
         </x-slot>
 
         <x-slot name="footer">

@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CommandController;
+use App\Http\Controllers\CrudController;
 use App\Http\Controllers\ProductController;
 use App\Http\Livewire\AboutComponent;
 use App\Http\Livewire\FaqComponent;
@@ -61,8 +62,9 @@ Route::middleware(['auth:sanctum','verified'])->group(function(){
 
 Route::middleware('admin')->group(function(){
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
-    Route::resource('products', ProductController::class);
-    Route::get('/categories', [CategorieController::class, 'index'])->name('categories');
-    Route::get('/clients', [ClientController::class, 'index'])->name('clients');
-    Route::get('/commands', [CommandController::class, 'index'])->name('commands');
+    Route::get('/products', [CrudController::class, 'products'])->name('products');
+    Route::get('/categories', [CrudController::class, 'categories'])->name('categories');
+    Route::get('/clients', [CrudController::class, 'clients'])->name('clients');
+    Route::get('/commands', [CrudController::class, 'commands'])->name('commands');
+
 });

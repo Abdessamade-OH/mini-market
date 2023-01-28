@@ -30,7 +30,7 @@ class Categories extends Component
     protected $rules = [
         'category.name' => 'required|string|min:3',
         'category.description' => 'required|string|min:10',
-        'category.icon_class' => 'required|string|min:5',
+        'category.icon_class' => 'required|string'
     ];
     
     public function render()
@@ -39,8 +39,7 @@ class Categories extends Component
         $categories = Categorie::where('id', '!=', 0)
             ->when($this->q, function($query){
                 return $query->where(function($query){
-                    $query->where('name', 'like', '%' . $this->q . '%')
-                        ->orWhere('prix', 'like', '%'. $this->q . '%');
+                    $query->where('name', 'like', '%' . $this->q . '%');
                 });
             })
             ->orderBy( $this->sortBy, $this->sortAsc ? 'ASC' : 'DESC');
@@ -92,23 +91,30 @@ class Categories extends Component
     public function confirmCategoryEdit(Categorie $category) 
     {
         $this->category = $category;
+        //dd($this->category);
         $this->confirmingCategoryAdd = true;
     }
 
     public function saveCategory()
     {
-        $this->validate();
+        //dd($this->category);
+        //$this->validate();
+        //dd($this->category);
         if(isset($this->category->id))
         {
+            //dd($this->category);
             $this->category->save();
+            //dd($this->category);
             session()->flash('message', 'category Saved successfully');
         }
         else
         {
+            //dd($this->category['name']);
             Categorie::create([
                 'name' => $this->category['name'],
-                'description' => $this->category['description'],
                 'icon_class' => $this->category['icon_class'],
+                'description' => $this->category['description'],
+                
             ]);
             session()->flash('message', 'category Added successfully');
         }   

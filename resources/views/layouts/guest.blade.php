@@ -144,7 +144,7 @@
                                         <div class="avatar-header"><img src="assets/img/logo/avatar.jpg"></div> My Account ({{Auth::user()->name}}) </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="transaction.html">Transactions History</a>
-                                        <a class="dropdown-item" href="{{ route('admin.settings') }}">Settings</a> 
+                                        <a class="dropdown-item" href="{{ url('user/profile') }}">Settings</a> 
                                         <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a> 
                                         
                                         <form id="logout-form" method="POST" action="{{route('logout')}}"> 
@@ -158,7 +158,7 @@
                                             <div class="avatar-header"><img src="assets/img/logo/avatar.jpg"></div> My Account ({{Auth::user()->name}}) </a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                             <a class="dropdown-item" href="transaction.html">Transactions History</a>
-                                            <a class="dropdown-item" href="{{ route('user.settings') }}">Settings</a>
+                                            <a class="dropdown-item" href="{{ url('user/profile') }}">Settings</a>
                                             <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a> 
                                              
                                             <form id="logout-form" method="POST" action="{{route('logout')}}"> 
