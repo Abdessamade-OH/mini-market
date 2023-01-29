@@ -51,8 +51,6 @@ class Categories extends Component
         ]);
     }
 
-    //updates the pagination when the expensive model is checked
-
     public function updatingQ()
     {
         $this->resetPage();
