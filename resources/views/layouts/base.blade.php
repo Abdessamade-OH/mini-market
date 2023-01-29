@@ -218,11 +218,11 @@
                      <h5>Get Our App</h5>
                      <ul class="mb-0">
                          <li class="download-app">
-                             <a href="#"><img src="assets/img/playstore.png"></a>
+                             <a href="#"><img src="{{asset('assets/img/playstore.png')}}"></a>
                          </li>
                          <li style="height: 200px">
                              <div class="mockup">
-                                 <img src="assets/img/mockup.png">
+                                 <img src="{{asset('assets/img/mockup.png')}}">
                              </div>
                          </li>
                      </ul>

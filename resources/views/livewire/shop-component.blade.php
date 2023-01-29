@@ -114,13 +114,13 @@
                                     </div>
                                     <div class="card-body">
                                         <h4 class="card-title">
-                                            <a href="detail-product.html">Product Title</a>
+                                            <a href="/product/detail">Product Title</a>
                                         </h4>
                                         <div class="card-price">
                                             <span class="discount">Rp. 300.000</span>
                                             <span class="reguler">Rp. 200.000</span>
                                         </div>
-                                        <a href="detail-product.html" class="btn btn-block btn-primary">
+                                        <a href="/product/detail" class="btn btn-block btn-primary">
                                             Add to Cart
                                         </a>
 
@@ -147,13 +147,13 @@
                                     </div>
                                     <div class="card-body">
                                         <h4 class="card-title">
-                                            <a href="detail-product.html">Product Title</a>
+                                            <a href="/product/detail">Product Title</a>
                                         </h4>
                                         <div class="card-price">
                                             <span class="discount">Rp. 300.000</span>
                                             <span class="reguler">Rp. 200.000</span>
                                         </div>
-                                        <a href="detail-product.html" class="btn btn-block btn-primary">
+                                        <a href="/product/detail" class="btn btn-block btn-primary">
                                             Add to Cart
                                         </a>
 
@@ -180,13 +180,13 @@
                                     </div>
                                     <div class="card-body">
                                         <h4 class="card-title">
-                                            <a href="detail-product.html">Product Title</a>
+                                            <a href="/product/detail">Product Title</a>
                                         </h4>
                                         <div class="card-price">
                                             <span class="discount">Rp. 300.000</span>
                                             <span class="reguler">Rp. 200.000</span>
                                         </div>
-                                        <a href="detail-product.html" class="btn btn-block btn-primary">
+                                        <a href="/product/detail" class="btn btn-block btn-primary">
                                             Add to Cart
                                         </a>
 
@@ -213,13 +213,13 @@
                                     </div>
                                     <div class="card-body">
                                         <h4 class="card-title">
-                                            <a href="detail-product.html">Product Title</a>
+                                            <a href="/product/detail">Product Title</a>
                                         </h4>
                                         <div class="card-price">
                                             <span class="discount">Rp. 300.000</span>
                                             <span class="reguler">Rp. 200.000</span>
                                         </div>
-                                        <a href="detail-product.html" class="btn btn-block btn-primary">
+                                        <a href="/product/detail" class="btn btn-block btn-primary">
                                             Add to Cart
                                         </a>
 
@@ -246,13 +246,13 @@
                                     </div>
                                     <div class="card-body">
                                         <h4 class="card-title">
-                                            <a href="detail-product.html">Product Title</a>
+                                            <a href="/product/detail">Product Title</a>
                                         </h4>
                                         <div class="card-price">
                                             <span class="discount">Rp. 300.000</span>
                                             <span class="reguler">Rp. 200.000</span>
                                         </div>
-                                        <a href="detail-product.html" class="btn btn-block btn-primary">
+                                        <a href="/product/detail" class="btn btn-block btn-primary">
                                             Add to Cart
                                         </a>
 
@@ -291,13 +291,13 @@
                                     </div>
                                     <div class="card-body">
                                         <h4 class="card-title">
-                                            <a href="detail-product.html">Product Title</a>
+                                            <a href="/product/detail">Product Title</a>
                                         </h4>
                                         <div class="card-price">
                                             <span class="discount">Rp. 300.000</span>
                                             <span class="reguler">Rp. 200.000</span>
                                         </div>
-                                        <a href="detail-product.html" class="btn btn-block btn-primary">
+                                        <a href="/product/detail" class="btn btn-block btn-primary">
                                             Add to Cart
                                         </a>
 
@@ -324,13 +324,13 @@
                                     </div>
                                     <div class="card-body">
                                         <h4 class="card-title">
-                                            <a href="detail-product.html">Product Title</a>
+                                            <a href="/product/detail">Product Title</a>
                                         </h4>
                                         <div class="card-price">
                                             <span class="discount">Rp. 300.000</span>
                                             <span class="reguler">Rp. 200.000</span>
                                         </div>
-                                        <a href="detail-product.html" class="btn btn-block btn-primary">
+                                        <a href="/product/detail" class="btn btn-block btn-primary">
                                             Add to Cart
                                         </a>
 
@@ -357,13 +357,13 @@
                                     </div>
                                     <div class="card-body">
                                         <h4 class="card-title">
-                                            <a href="detail-product.html">Product Title</a>
+                                            <a href="/product/detail">Product Title</a>
                                         </h4>
                                         <div class="card-price">
                                             <span class="discount">Rp. 300.000</span>
                                             <span class="reguler">Rp. 200.000</span>
                                         </div>
-                                        <a href="detail-product.html" class="btn btn-block btn-primary">
+                                        <a href="/product/detail" class="btn btn-block btn-primary">
                                             Add to Cart
                                         </a>
 
@@ -390,13 +390,13 @@
                                     </div>
                                     <div class="card-body">
                                         <h4 class="card-title">
-                                            <a href="detail-product.html">Product Title</a>
+                                            <a href="/product/detail">Product Title</a>
                                         </h4>
                                         <div class="card-price">
                                             <span class="discount">Rp. 300.000</span>
                                             <span class="reguler">Rp. 200.000</span>
                                         </div>
-                                        <a href="detail-product.html" class="btn btn-block btn-primary">
+                                        <a href="/product/detail" class="btn btn-block btn-primary">
                                             Add to Cart
                                         </a>
 
@@ -423,13 +423,13 @@
                                     </div>
                                     <div class="card-body">
                                         <h4 class="card-title">
-                                            <a href="detail-product.html">Product Title</a>
+                                            <a href="/product/detail">Product Title</a>
                                         </h4>
                                         <div class="card-price">
                                             <span class="discount">Rp. 300.000</span>
                                             <span class="reguler">Rp. 200.000</span>
                                         </div>
-                                        <a href="detail-product.html" class="btn btn-block btn-primary">
+                                        <a href="/product/detail" class="btn btn-block btn-primary">
                                             Add to Cart
                                         </a>
 
@@ -468,13 +468,13 @@
                                     </div>
                                     <div class="card-body">
                                         <h4 class="card-title">
-                                            <a href="detail-product.html">Product Title</a>
+                                            <a href="/product/detail">Product Title</a>
                                         </h4>
                                         <div class="card-price">
                                             <span class="discount">Rp. 300.000</span>
                                             <span class="reguler">Rp. 200.000</span>
                                         </div>
-                                        <a href="detail-product.html" class="btn btn-block btn-primary">
+                                        <a href="/product/detail" class="btn btn-block btn-primary">
                                             Add to Cart
                                         </a>
 
@@ -501,13 +501,13 @@
                                     </div>
                                     <div class="card-body">
                                         <h4 class="card-title">
-                                            <a href="detail-product.html">Product Title</a>
+                                            <a href="/product/detail">Product Title</a>
                                         </h4>
                                         <div class="card-price">
                                             <span class="discount">Rp. 300.000</span>
                                             <span class="reguler">Rp. 200.000</span>
                                         </div>
-                                        <a href="detail-product.html" class="btn btn-block btn-primary">
+                                        <a href="/product/detail" class="btn btn-block btn-primary">
                                             Add to Cart
                                         </a>
 
@@ -534,13 +534,13 @@
                                     </div>
                                     <div class="card-body">
                                         <h4 class="card-title">
-                                            <a href="detail-product.html">Product Title</a>
+                                            <a href="/product/detail">Product Title</a>
                                         </h4>
                                         <div class="card-price">
                                             <span class="discount">Rp. 300.000</span>
                                             <span class="reguler">Rp. 200.000</span>
                                         </div>
-                                        <a href="detail-product.html" class="btn btn-block btn-primary">
+                                        <a href="/product/detail" class="btn btn-block btn-primary">
                                             Add to Cart
                                         </a>
 
@@ -567,13 +567,13 @@
                                     </div>
                                     <div class="card-body">
                                         <h4 class="card-title">
-                                            <a href="detail-product.html">Product Title</a>
+                                            <a href="/product/detail">Product Title</a>
                                         </h4>
                                         <div class="card-price">
                                             <span class="discount">Rp. 300.000</span>
                                             <span class="reguler">Rp. 200.000</span>
                                         </div>
-                                        <a href="detail-product.html" class="btn btn-block btn-primary">
+                                        <a href="/product/detail" class="btn btn-block btn-primary">
                                             Add to Cart
                                         </a>
 
@@ -600,13 +600,13 @@
                                     </div>
                                     <div class="card-body">
                                         <h4 class="card-title">
-                                            <a href="detail-product.html">Product Title</a>
+                                            <a href="/product/detail">Product Title</a>
                                         </h4>
                                         <div class="card-price">
                                             <span class="discount">Rp. 300.000</span>
                                             <span class="reguler">Rp. 200.000</span>
                                         </div>
-                                        <a href="detail-product.html" class="btn btn-block btn-primary">
+                                        <a href="/product/detail" class="btn btn-block btn-primary">
                                             Add to Cart
                                         </a>
 
@@ -645,13 +645,13 @@
                                     </div>
                                     <div class="card-body">
                                         <h4 class="card-title">
-                                            <a href="detail-product.html">Product Title</a>
+                                            <a href="/product/detail">Product Title</a>
                                         </h4>
                                         <div class="card-price">
                                             <span class="discount">Rp. 300.000</span>
                                             <span class="reguler">Rp. 200.000</span>
                                         </div>
-                                        <a href="detail-product.html" class="btn btn-block btn-primary">
+                                        <a href="/product/detail" class="btn btn-block btn-primary">
                                             Add to Cart
                                         </a>
 
@@ -678,13 +678,13 @@
                                     </div>
                                     <div class="card-body">
                                         <h4 class="card-title">
-                                            <a href="detail-product.html">Product Title</a>
+                                            <a href="/product/detail">Product Title</a>
                                         </h4>
                                         <div class="card-price">
                                             <span class="discount">Rp. 300.000</span>
                                             <span class="reguler">Rp. 200.000</span>
                                         </div>
-                                        <a href="detail-product.html" class="btn btn-block btn-primary">
+                                        <a href="/product/detail" class="btn btn-block btn-primary">
                                             Add to Cart
                                         </a>
 
@@ -711,13 +711,13 @@
                                     </div>
                                     <div class="card-body">
                                         <h4 class="card-title">
-                                            <a href="detail-product.html">Product Title</a>
+                                            <a href="/product/detail">Product Title</a>
                                         </h4>
                                         <div class="card-price">
                                             <span class="discount">Rp. 300.000</span>
                                             <span class="reguler">Rp. 200.000</span>
                                         </div>
-                                        <a href="detail-product.html" class="btn btn-block btn-primary">
+                                        <a href="/product/detail" class="btn btn-block btn-primary">
                                             Add to Cart
                                         </a>
 
@@ -744,13 +744,13 @@
                                     </div>
                                     <div class="card-body">
                                         <h4 class="card-title">
-                                            <a href="detail-product.html">Product Title</a>
+                                            <a href="/product/detail">Product Title</a>
                                         </h4>
                                         <div class="card-price">
                                             <span class="discount">Rp. 300.000</span>
                                             <span class="reguler">Rp. 200.000</span>
                                         </div>
-                                        <a href="detail-product.html" class="btn btn-block btn-primary">
+                                        <a href="/product/detail" class="btn btn-block btn-primary">
                                             Add to Cart
                                         </a>
 
@@ -777,13 +777,13 @@
                                     </div>
                                     <div class="card-body">
                                         <h4 class="card-title">
-                                            <a href="detail-product.html">Product Title</a>
+                                            <a href="/product/detail">Product Title</a>
                                         </h4>
                                         <div class="card-price">
                                             <span class="discount">Rp. 300.000</span>
                                             <span class="reguler">Rp. 200.000</span>
                                         </div>
-                                        <a href="detail-product.html" class="btn btn-block btn-primary">
+                                        <a href="/product/detail" class="btn btn-block btn-primary">
                                             Add to Cart
                                         </a>
 

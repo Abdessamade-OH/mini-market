@@ -6,6 +6,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CommandController;
 use App\Http\Controllers\CrudController;
 use App\Http\Controllers\ProductController;
+use App\Http\Livewire\ProductDetailComponent;
 use App\Http\Livewire\AboutComponent;
 use App\Http\Livewire\FaqComponent;
 use App\Http\Livewire\TermsComponent;
@@ -38,6 +39,7 @@ Route::get('/about',AboutComponent::class);
 Route::get('/faq',FaqComponent::class);
 Route::get('/terms',TermsComponent::class);
 Route::get('/privacy',PrivacyComponent::class);
+Route::get('/product/detail',ProductDetailComponent::class);
 
 // Route::middleware([
 //     'auth:sanctum',
