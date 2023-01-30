@@ -22,7 +22,6 @@ class ProductFactory extends Factory
             'description' => $this->faker->sentence,
             'prix' => $this->faker->randomNumber(2),
             'categorie_id' => Categorie::factory(),
-            'image_path' => $this->faker->words(3,true),
             'stock' => $this->faker->randomNumber(2),
             'created_at' => now()
         ];

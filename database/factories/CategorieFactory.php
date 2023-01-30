@@ -20,7 +20,6 @@ class CategorieFactory extends Factory
             //
             'name' => $this->faker->word,
             'description' => $this->faker->sentence,
-            'icon_class' => $this->faker->word,
             'created_at' => now()
         ];
     }

@@ -15,10 +15,13 @@ class Clients extends Component
     public $sortAsc = true;
     public $banned;
     public $active;
+    public $utype;
+    public $clients;
 
     public $confirmingUserDeletion = false;
     public $confirmingUserEdit = false;
     public $confirmingUserBan = false;
+    public $confirmingUserPromotion = false;
 
     protected $queryString = [
         'q' => ['except' => ''],
@@ -44,6 +47,8 @@ class Clients extends Component
             })->when($this->active, function($query){
                 return $query->where('banned', 0);
             })->when(auth()->user()->utype !== 'SAD', function($query){
+                return $query->where('utype', 'USR');
+            })->when($this->clients, function($query){
                 return $query->where('utype', 'USR');
             })
             ->orderBy( $this->sortBy, $this->sortAsc ? 'ASC' : 'DESC');
@@ -95,22 +100,44 @@ class Clients extends Component
         dd('test');
     }
 
+    public function confirmUserPromotion(User $user)
+    {
+        $this->confirmingUserPromotion = $user->id;
+        $this->utype = $user->utype;
+    }
+
     public function banUser(User $user)
     {
         if($user->banned)
         {
             $user->banned= 0;
-            $user->save();
-            $this->confirmingUserBan = false;
             session()->flash('message', 'user Unbanned successfully');
         }
         else
         {
             $user->banned= 1;
-            $user->save();
-            $this->confirmingUserBan = false;
             session()->flash('message', 'user Banned successfully');
         }
+
+        $user->save();
+        $this->confirmingUserBan = false;
+    }
+
+    public function promoteUser(User $user)
+    {
+        if($user->utype === 'USR')
+        {
+            $user->utype = 'ADM';
+            session()->flash('message', 'Client Promoted successfully');
+        }
+        else
+        {
+            $user->utype = 'USR';
+            session()->flash('message', 'Admin Demoted successfully');
+        }
+
+        $user->save();
+        $this->confirmingUserPromotion = false;
     }
 
 }

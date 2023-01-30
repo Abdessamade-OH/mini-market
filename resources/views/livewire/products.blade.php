@@ -82,19 +82,30 @@
                 @foreach($products as $product)
                     <tr>
                         <td class="border px-4 py-2">{{$product->id}}</td>
-                        <td class="border px-4 py-2">{{$product->name}}</td>
+                        <td class="border px-4 py-2">
+                            
+                            <div class="flex flex-row items-center flex-wrap">
+                                <div class="mr-2" x-show="! photoPreview">
+                                    <img src="{{ $product->image_path }}" alt="Pic " class="rounded-full h-8 w-8 object-cover">
+                                </div>
+                            
+                                {{$product->name}}
+                            </div>
+                        </td>
                         <td class="border px-4 py-2">{{$product->prix}}</td>
                         <td class="border px-4 py-2">{{$product->stock}}</td>
                         @if($category === 'all')
                             <td class="border px-4 py-2">{{$product->categorie->name}}</td>
                         @endif
-                        <td class="border px-4 py-2 flex justify-center">
-                            <x-jet-button wire:click="confirmProductEdit({{$product->id}})" class="mr-6 bg-orange-500 hover:bg-orange-700">
-                                Edit
-                            </x-jet-button>
-                            <x-jet-danger-button wire:click="confirmProductDeletion({{$product->id}})" wire:loading.attr="disabled">
-                                {{ __('Delete') }}
-                            </x-jet-danger-button>
+                        <td class="border px-4 py-2">
+                            <div class="flex justify-center">
+                                <x-jet-button wire:click="confirmProductEdit({{$product->id}})" class="mr-6 bg-orange-500 hover:bg-orange-700">
+                                    Edit
+                                </x-jet-button>
+                                <x-jet-danger-button wire:click="confirmProductDeletion({{$product->id}})" wire:loading.attr="disabled">
+                                    {{ __('Delete') }}
+                                </x-jet-danger-button>
+                            </div>
                         </td>
                     </tr>
                 @endforeach
