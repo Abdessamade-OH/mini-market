@@ -23,6 +23,7 @@ return new class extends Migration
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
             $table->string('utype')->default('USR')->comment('ADM for Admin and USR for User or Customer');
+            $table->string('banned')->default(0)->comment('0 not banned, 1 banned');
             $table->timestamps();
         });
     }
