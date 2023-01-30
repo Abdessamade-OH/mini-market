@@ -14,6 +14,7 @@ class Clients extends Component
     public $sortBy = 'id';
     public $sortAsc = true;
     public $banned;
+    public $active;
 
     public $confirmingUserDeletion = false;
     public $confirmingUserEdit = false;
@@ -34,12 +35,14 @@ class Clients extends Component
     public function render()
     {
          
-        $users = User::where('id', '!=', 0)
+        $users = User::where('id', '!=', auth()->user()->id)
             ->when($this->q, function($query){
                 return $query->where(function($query){
                     $query->where('name', 'like', '%' . $this->q . '%')
                     ->orWhere('email', 'like', '%'. $this->q . '%');
                 });
+            })->when($this->active, function($query){
+                return $query->where('banned', 0);
             })
             ->orderBy( $this->sortBy, $this->sortAsc ? 'ASC' : 'DESC');
             

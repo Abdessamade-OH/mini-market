@@ -20,9 +20,12 @@
             <div>
                 <input wire:model.debounce.200ms="q" type="search" placeholder="search" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
             </div>
+            <div class="mr-2"> {{-- margin --}}
+                <input type="checkbox" class="mr-6 leading-tight" id="active" wire:model="active" />
+                <label for="active">Active only</label>
+            </div>
             
         </div>
-
         <table class="table-auto w-full"> {{-- full width --}}
             <thead>
                 <tr>
@@ -59,7 +62,15 @@
                 @foreach($users as $u)
                     <tr>
                         <td class="border px-4 py-2">{{$u->id}}</td>
-                        <td class="border px-4 py-2">{{$u->name}}</td>
+                        <td class="border px-4 py-2">
+                            <div class="flex flex-row items-center flex-wrap">
+                                <div class="mr-2" x-show="! photoPreview">
+                                    <img src="{{ $u->profile_photo_url }}" alt="{{ $u->name }}" class="rounded-full h-8 w-8 object-cover">
+                                </div>
+                            
+                                {{$u->name}}
+                            </div>
+                        </td>
                         <td class="border px-4 py-2">{{$u->email}}</td>
                         <td class="border px-4 py-2">
                             @if($u->utype ==='ADM')
@@ -79,18 +90,20 @@
                                 ---
                             @endif
                         </td>
-                        <td class="border px-4 py-2 flex justify-center">
-                            <x-jet-button wire:click="confirmUserEmail({{$u->id}})" class="mr-6 bg-orange-500 hover:bg-orange-700">
-                                Email
-                            </x-jet-button>
-                            @if($u->utype==='USR')
-                                <x-jet-danger-button class="mr-6" wire:click="confirmUserBan({{$u->id}})" wire:loading.attr="disabled">
-                                    {{ $u->banned ? __('Unban') :  __('Ban')}}
+                        <td class="border px-4 py-2 ">
+                            <div class="flex justify-center w-full">
+                                <x-jet-button wire:click="confirmUserEmail({{$u->id}})" class="mr-6 mb-2 bg-orange-500 hover:bg-orange-700">
+                                    Email
+                                </x-jet-button>
+                                @if($u->utype==='USR')
+                                    <x-jet-danger-button class="mr-6 mb-2" wire:click="confirmUserBan({{$u->id}})" wire:loading.attr="disabled">
+                                        {{ $u->banned ? __('Unban') :  __('Ban')}}
+                                    </x-jet-danger-button>
+                                @endif
+                                <x-jet-danger-button class="mb-2" wire:click="confirmUserDeletion({{$u->id}})" wire:loading.attr="disabled">
+                                    {{ __('Delete') }}
                                 </x-jet-danger-button>
-                            @endif
-                            <x-jet-danger-button wire:click="confirmUserDeletion({{$u->id}})" wire:loading.attr="disabled">
-                                {{ __('Delete') }}
-                            </x-jet-danger-button>
+                            </div>
                         </td>
                     </tr>
                 @endforeach
