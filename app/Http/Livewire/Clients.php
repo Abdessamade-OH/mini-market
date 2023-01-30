@@ -43,6 +43,8 @@ class Clients extends Component
                 });
             })->when($this->active, function($query){
                 return $query->where('banned', 0);
+            })->when(auth()->user()->utype !== 'SAD', function($query){
+                return $query->where('utype', 'USR');
             })
             ->orderBy( $this->sortBy, $this->sortAsc ? 'ASC' : 'DESC');
             

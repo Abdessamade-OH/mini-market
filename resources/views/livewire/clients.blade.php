@@ -11,7 +11,13 @@
         @endif
 
         <div class="mt-8 text-2xl flex justify-between">
-            <div>Users</div>
+            <div>
+                @if(Auth()->user()->utype === 'SAD')
+                    Clients and Admins
+                @else
+                    Clients
+                @endif
+            </div>
         </div>
     </div>
 
@@ -47,9 +53,11 @@
                             <x-sort-icon sortField="email" :sort-by="$sortBy" :sort-asc="$sortAsc" />
                         </div>
                     </th>
-                    <th class="px-4 py-2"> {{-- padding x of 4 --}}
-                        Type
-                    </th>
+                    @if(Auth()->user()->utype === 'SAD')
+                        <th class="px-4 py-2"> {{-- padding x of 4 --}}
+                            Type
+                        </th>
+                    @endif
                     <th class="px-4 py-2"> {{-- padding x of 4 --}}
                         Status
                     </th>
@@ -72,13 +80,15 @@
                             </div>
                         </td>
                         <td class="border px-4 py-2">{{$u->email}}</td>
-                        <td class="border px-4 py-2">
-                            @if($u->utype ==='ADM')
-                                Admin
-                            @else
-                                Client
-                            @endif
-                        </td>
+                        @if(Auth()->user()->utype === 'SAD')
+                            <td class="border px-4 py-2">
+                                @if($u->utype ==='ADM')
+                                    Admin
+                                @else
+                                    Client
+                                @endif
+                            </td>
+                        @endif
                         <td class="border px-4 py-2 text-center">
                             @if($u->utype==='USR')
                                 @if($u->banned)
@@ -99,10 +109,24 @@
                                     <x-jet-danger-button class="mr-6 mb-2" wire:click="confirmUserBan({{$u->id}})" wire:loading.attr="disabled">
                                         {{ $u->banned ? __('Unban') :  __('Ban')}}
                                     </x-jet-danger-button>
+                                    
+                                @endif
+                                @if(Auth()->user()->utype === 'SAD')
+                                    @if($u->utype==='USR' && !$u->banned)
+                                        <x-jet-danger-button class="mr-6 mb-2" wire:click="confirmUserDeletion({{$u->id}})" wire:loading.attr="disabled">
+                                            {{ __('Promote') }}
+                                        </x-jet-danger-button>
+                                    @endif
+                                    @if($u->utype==='ADM')
+                                        <x-jet-danger-button class="mr-6 mb-2" wire:click="confirmUserDeletion({{$u->id}})" wire:loading.attr="disabled">
+                                            {{ __('Demote') }}
+                                        </x-jet-danger-button>
+                                    @endif
                                 @endif
                                 <x-jet-danger-button class="mb-2" wire:click="confirmUserDeletion({{$u->id}})" wire:loading.attr="disabled">
                                     {{ __('Delete') }}
                                 </x-jet-danger-button>
+
                             </div>
                         </td>
                     </tr>

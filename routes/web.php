@@ -63,7 +63,7 @@ Route::middleware(['auth:sanctum','verified'])->group(function(){
 });
 
 Route::middleware('admin')->group(function(){
-    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+    //Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
     Route::get('/products', [CrudController::class, 'products'])->name('products');
     Route::get('/categories', [CrudController::class, 'categories'])->name('categories');
     Route::get('/clients', [CrudController::class, 'clients'])->name('clients');

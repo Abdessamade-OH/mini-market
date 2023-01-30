@@ -22,7 +22,7 @@
 
         <div class="min-h-screen bg-gray-100">
         @auth
-            @if(Auth::user()->utype === 'ADM')
+            @if(Auth::user()->utype === 'ADM' || Auth::user()->utype === 'SAD')
                 @livewire('navigation-menu')
             @endif
         @endauth

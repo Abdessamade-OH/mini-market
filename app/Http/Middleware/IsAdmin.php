@@ -17,7 +17,7 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->user()->utype === 'ADM')
+        if(auth()->user()->utype === 'ADM' || auth()->user()->utype === 'SAD')
         {
             return $next($request);
         }
