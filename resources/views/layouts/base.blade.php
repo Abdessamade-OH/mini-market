@@ -106,7 +106,7 @@
                                     </li>
                                     <li class="d-flex justify-content-between pl-3 pr-3 pt-3">
                                         
-                                        <a href="checkout.html" class="btn btn-primary">Checkout</a>
+                                        <a href="/checkout" class="btn btn-primary">Checkout</a>
                                     </li>
                                 </ul>
                             </div>
@@ -123,7 +123,7 @@
                                         <a class="dropdown-item" href="{{ url('user/profile') }}">Settings</a> 
                                         <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a> 
                                        
-										<a title="Contact Messages" href="{{route('admin.contact')}}">Contact Message</a>
+										
                                         <form id="logout-form" method="POST" action="{{route('logout')}}"> 
                                         @csrf 
                                         </form> 

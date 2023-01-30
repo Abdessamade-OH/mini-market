@@ -9,6 +9,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Livewire\ProductDetailComponent;
 use App\Http\Livewire\AboutComponent;
 use App\Http\Livewire\ContactUs;
+use App\Http\Livewire\Checkout;
 use App\Http\Livewire\FaqComponent;
 use App\Http\Livewire\TermsComponent;
 use App\Http\Livewire\PrivacyComponent;
@@ -43,6 +44,7 @@ Route::get('/terms',TermsComponent::class);
 Route::get('/privacy',PrivacyComponent::class);
 Route::get('/product/detail',ProductDetailComponent::class);
 Route::get('/contact-us',ContactUs::class);
+Route::get('/checkout',Checkout::class);
 
 // Route::middleware([
 //     'auth:sanctum',

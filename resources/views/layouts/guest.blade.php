@@ -130,7 +130,7 @@
                                     </li>
                                     <li class="d-flex justify-content-between pl-3 pr-3 pt-3">
                                         <a href="cart.html" class="btn btn-secondary">View Cart</a>
-                                        <a href="checkout.html" class="btn btn-primary">Checkout</a>
+                                        <a href="/checkout" class="btn btn-primary">Checkout</a>
                                     </li>
                                 </ul>
                             </div>
