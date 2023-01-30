@@ -174,9 +174,9 @@ class Products extends Component
                     'photo' => 'image|max:1024', // 1MB Max
                 ]);
          
-                $path = $this->photo->store('/public/products-photos');
+                $path = $this->photo->store('public/products-photos');
                 
-                $product->image_path = $path;
+                $product->image_path = Storage::url($path);
             }
 
             $product->save();
