@@ -11,10 +11,6 @@ class CrudController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
-    {
-        return view('dashboard');
-    }
 
     public function products()
     {

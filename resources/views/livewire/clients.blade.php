@@ -11,7 +11,13 @@
         @endif
 
         <div class="mt-8 text-2xl flex justify-between">
-            <div>Users</div>
+            <div>
+                @if(Auth()->user()->utype === 'SAD')
+                    Clients and Admins
+                @else
+                    Clients
+                @endif
+            </div>
         </div>
     </div>
 
@@ -20,10 +26,18 @@
             <div>
                 <input wire:model.debounce.200ms="q" type="search" placeholder="search" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
             </div>
+            @if(Auth()->user()->utype === 'SAD')
+                <div class="mr-2"> {{-- margin --}}
+                    <input type="checkbox" class="mr-6 leading-tight" id="clients" wire:model="clients" />
+                    <label for="clients">Clients only</label>
+                </div>
+            @endif
+
             <div class="mr-2"> {{-- margin --}}
                 <input type="checkbox" class="mr-6 leading-tight" id="active" wire:model="active" />
                 <label for="active">Active only</label>
             </div>
+            
             
         </div>
         <table class="table-auto w-full"> {{-- full width --}}
@@ -47,9 +61,11 @@
                             <x-sort-icon sortField="email" :sort-by="$sortBy" :sort-asc="$sortAsc" />
                         </div>
                     </th>
-                    <th class="px-4 py-2"> {{-- padding x of 4 --}}
-                        Type
-                    </th>
+                    @if(Auth()->user()->utype === 'SAD')
+                        <th class="px-4 py-2"> {{-- padding x of 4 --}}
+                            Type
+                        </th>
+                    @endif
                     <th class="px-4 py-2"> {{-- padding x of 4 --}}
                         Status
                     </th>
@@ -72,13 +88,15 @@
                             </div>
                         </td>
                         <td class="border px-4 py-2">{{$u->email}}</td>
-                        <td class="border px-4 py-2">
-                            @if($u->utype ==='ADM')
-                                Admin
-                            @else
-                                Client
-                            @endif
-                        </td>
+                        @if(Auth()->user()->utype === 'SAD')
+                            <td class="border px-4 py-2">
+                                @if($u->utype ==='ADM')
+                                    Admin
+                                @else
+                                    Client
+                                @endif
+                            </td>
+                        @endif
                         <td class="border px-4 py-2 text-center">
                             @if($u->utype==='USR')
                                 @if($u->banned)
@@ -99,10 +117,24 @@
                                     <x-jet-danger-button class="mr-6 mb-2" wire:click="confirmUserBan({{$u->id}})" wire:loading.attr="disabled">
                                         {{ $u->banned ? __('Unban') :  __('Ban')}}
                                     </x-jet-danger-button>
+                                    
+                                @endif
+                                @if(Auth()->user()->utype === 'SAD')
+                                    @if($u->utype==='USR' && !$u->banned)
+                                        <x-jet-danger-button class="mr-6 mb-2" wire:click="confirmUserPromotion({{$u->id}})" wire:loading.attr="disabled">
+                                            {{ __('Promote') }}
+                                        </x-jet-danger-button>
+                                    @endif
+                                    @if($u->utype==='ADM')
+                                        <x-jet-danger-button class="mr-6 mb-2" wire:click="confirmUserPromotion({{$u->id}})" wire:loading.attr="disabled">
+                                            {{ __('Demote') }}
+                                        </x-jet-danger-button>
+                                    @endif
                                 @endif
                                 <x-jet-danger-button class="mb-2" wire:click="confirmUserDeletion({{$u->id}})" wire:loading.attr="disabled">
                                     {{ __('Delete') }}
                                 </x-jet-danger-button>
+
                             </div>
                         </td>
                     </tr>
@@ -155,6 +187,27 @@
             {{-- the flag holds in the user id --}}
             <x-jet-danger-button class="ml-3" wire:click="banUser({{$confirmingUserBan}})" wire:loading.attr="disabled">
                 {{ $this->banned ? __('Unban User') :  __('Ban User')}}
+            </x-jet-danger-button>
+        </x-slot>
+    </x-jet-confirmation-modal>
+
+    <x-jet-confirmation-modal wire:model="confirmingUserPromotion">
+        <x-slot name="title">
+            {{ $this->utype==='USR' ? 'Promote Client' : 'Demote Admin' }}
+        </x-slot>
+
+        <x-slot name="content">
+            {{ $this->utype==='USR' ? __('Are you sure you want to promote this client?') :  __('Are you sure you want to demote this admin?')}}
+        </x-slot>
+
+        <x-slot name="footer">
+            {{-- on cancel, make the flag false again --}}
+            <x-jet-secondary-button wire:click="$set('confirmingUserPromotion', false)" wire:loading.attr="disabled">
+                {{ __('Cancel') }}
+            </x-jet-secondary-button>
+            {{-- the flag holds in the user id --}}
+            <x-jet-danger-button class="ml-3" wire:click="promoteUser({{$confirmingUserPromotion}})" wire:loading.attr="disabled">
+                {{ $this->utype==='USR' ? __('Promote') :  __('Demote')}}
             </x-jet-danger-button>
         </x-slot>
     </x-jet-confirmation-modal>

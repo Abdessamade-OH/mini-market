@@ -27,7 +27,6 @@
             </div>
             
         </div>
-
         <table class="table-auto w-full"> {{-- full width --}}
             <thead>
                 <tr>
@@ -49,17 +48,23 @@
                 </tr>
             </thead>
             <tbody>
+                
                 @foreach($categories as $cat)
+                
                     <tr>
                         <td class="border px-4 py-2">{{$cat->id}}</td>
-                        <td class="border px-4 py-2">{{$cat->name}}</td>
-                        <td class="border px-4 py-2 flex justify-center">
-                            <x-jet-button wire:click="confirmCategoryEdit({{$cat->id}})" class="mr-6 bg-orange-500 hover:bg-orange-700">
-                                Edit
-                            </x-jet-button>
-                            <x-jet-danger-button wire:click="confirmCategoryDeletion({{$cat->id}})" wire:loading.attr="disabled">
-                                {{ __('Delete') }}
-                            </x-jet-danger-button>
+                        <td class="border px-4 py-2">
+                            <i class="{{$cat->icon_class}}"></i>{{$cat->name}}
+                        </td>
+                        <td class="border px-4 py-2">
+                            <div class="flex justify-center">
+                                <x-jet-button wire:click="confirmCategoryEdit({{$cat->id}})" class="mr-6 bg-orange-500 hover:bg-orange-700">
+                                    Edit
+                                </x-jet-button>
+                                <x-jet-danger-button wire:click="confirmCategoryDeletion({{$cat->id}})" wire:loading.attr="disabled">
+                                    {{ __('Delete') }}
+                                </x-jet-danger-button>
+                            </div>  
                         </td>
                     </tr>
                 @endforeach
