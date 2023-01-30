@@ -21,31 +21,6 @@
                             </a>
                         </div>
 
-                        <div class="slider-thumbnail">
-                            <ul class="d-flex flex-wrap p-0 list-unstyled">
-                                <li>
-                                    <a href="{{asset('assets/img/meats.jpg') }}" rel="gallerySwitchOnMouseOver: true, popupWin:{{asset('assets/img/meats.jpg') }}', useZoom: 'cloudZoom', smallImage: 'assets/img/meats.jpg') }}'" class="cloud-zoom-gallery">
-                                        <img itemprop="image" src="{{ asset('assets/img/meats.jpg') }}" style="width:135px;">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{asset('assets/img/fish.jpg') }}" rel="gallerySwitchOnMouseOver: true, popupWin:{{asset('assets/img/fish.jpg') }}', useZoom: 'cloudZoom', smallImage: 'assets/img/fish.jpg') }}'" class="cloud-zoom-gallery">
-                                        <img itemprop="image" src="{{ asset('assets/img/fish.jpg') }}" style="width:135px;">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ asset('assets/img/vegetables.jpg') }}" rel="gallerySwitchOnMouseOver: true, popupWin:{{asset('assets/img/vegetables.jpg') }}', useZoom: 'cloudZoom', smallImage: 'assets/img/vegetables.jpg') }}'" class="cloud-zoom-gallery">
-                                        <img itemprop="image" src="{{ asset('assets/img/vegetables.jpg') }}" style="width:135px;">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="assets/img/frozen.jpg') }}" rel="gallerySwitchOnMouseOver: true, popupWin:'assets/img/frozen.jpg') }}', useZoom: 'cloudZoom', smallImage: 'assets/img/frozen.jpg') }}'" class="cloud-zoom-gallery">
-                                        <img itemprop="image" src="{{ asset('assets/img/frozen.jpg') }}" style="width:135px;">
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-
                     </div>
                     <div class="col-sm-6">
                         <p>

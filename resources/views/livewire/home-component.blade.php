@@ -177,24 +177,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="item">
-                    <div class="card rounded-0 border-0 text-center">
-                        <img src="{{ asset('assets/img/frozen.jpg') }}">
-                        <div class="card-img-overlay d-flex align-items-center justify-content-center">
-                            <!-- <h4 class="card-title">Frozen Foods</h4> -->
-                            <a href="shop.html" class="btn btn-primary btn-lg">Frozen Foods</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="card rounded-0 border-0 text-center">
-                        <img src="{{ asset('assets/img/package.jpg') }}">
-                        <div class="card-img-overlay d-flex align-items-center justify-content-center">
-                            <!-- <h4 class="card-title">Package</h4> -->
-                            <a href="shop.html" class="btn btn-primary btn-lg">Package</a>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </section>
     </div>

@@ -60,28 +60,6 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="item">
-                            <a href="shop.html">
-                                <div class="media d-flex align-items-center justify-content-center">
-                                    <span class="d-flex mr-2"><i class="sb-bistro-french-fries"></i></span>
-                                    <div class="media-body">
-                                        <h5>Frozen Foods</h5>
-                                        <p>Protein Rich Ingridients From Local Farmers</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="shop.html">
-                                <div class="media d-flex align-items-center justify-content-center">
-                                    <span class="d-flex mr-2"><i class="sb-bistro-appetizer"></i></span>
-                                    <div class="media-body">
-                                        <h5>Packages</h5>
-                                        <p>Protein Rich Ingridients From Local Farmers</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
                     </div>
                 </div>
             </div>

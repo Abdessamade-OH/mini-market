@@ -167,7 +167,8 @@
             <div class="row">
                 <div class="col-md-3">
                     <h5>About</h5>
-                    <p>Nisi esse dolor irure dolor eiusmod ex deserunt proident cillum eu qui enim occaecat sunt aliqua anim eiusmod qui ut voluptate.</p>
+                    <p>What is FRESHCERY ? FRESHCERY is an online platform to buy your house products, groceries, etc.
+                       Where does it come from? FRESHCERY is stable in Tangier, Morrocco.</p>
                 </div>
                 <div class="col-md-3">
                     <h5>Links</h5>
