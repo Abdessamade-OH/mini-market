@@ -40,7 +40,7 @@ class Products extends Component
         'product.name' => 'required|string|min:3',
         'product.description' => 'required|string|min:10',
         'product.prix' => 'required|numeric|between:0.05,1000000',
-        'product.stock' => 'required|numeric|between:0,500',
+        'product.stock' => 'required|numeric|between:0,5000',
         'product.categorie_id' => 'required|numeric',
         'product.image_path' => ''
     ];

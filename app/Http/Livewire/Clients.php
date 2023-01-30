@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -17,7 +18,9 @@ class Clients extends Component
     public $active;
     public $utype;
     public $clients;
-    public $mail;
+    public $object;
+    public $content;
+    public $file;
 
     public $confirmingUserDeletion = false;
     public $confirmingUserEdit = false;
@@ -152,6 +155,18 @@ class Clients extends Component
             'object' => ['required', 'string', 'min=5'],
             'content' => ['required', 'string', 'min=10']
         ]);*/
-        dd('test');
+        //dd('test');
+        $this->validate([
+            'object' => ['required', 'string', 'min:3'],
+            'content' => ['required', 'string', 'min:5'],
+        ]);
+
+        if(isset($this->file)){
+            //Mail::to($user->email)->send(new normalMarkdownMail($this->object, $this->content));
+        }
+        else{
+
+        }
+        
     }
 }

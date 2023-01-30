@@ -30,7 +30,7 @@ class Categories extends Component
     protected $rules = [
         'category.name' => 'required|string|min:3',
         'category.description' => 'required|string|min:10',
-        'category.icon_class' => 'required|string'
+        'category.icon_class' => 'string'
     ];
     
     public function render()
@@ -108,12 +108,23 @@ class Categories extends Component
         else
         {
             //dd($this->category['name']);
-            Categorie::create([
-                'name' => $this->category['name'],
-                'icon_class' => $this->category['icon_class'],
-                'description' => $this->category['description'],
-                
-            ]);
+            if(isset($this->category->icon_class))
+            {
+                Categorie::create([
+                    'name' => $this->category['name'],
+                    'icon_class' => $this->category['icon_class'],
+                    'description' => $this->category['description'],
+                    
+                ]);
+            }
+            else
+            {
+                Categorie::create([
+                    'name' => $this->category['name'],
+                    'description' => $this->category['description'],
+                ]);
+            }
+            
             session()->flash('message', 'category Added successfully');
         }   
         $this->confirmingCategoryAdd = false;

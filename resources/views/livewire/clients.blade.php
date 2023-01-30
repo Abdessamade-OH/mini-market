@@ -221,12 +221,12 @@
         <x-slot name="content">
             {{-- Object --}}
             <x-jet-label for="object" value="{{ __('Object') }}" />
-            <x-jet-input id="object" type="text" class="mt-1 block w-full" wire:model.defer="mail.object" />
-            <x-jet-input-error for="mail.object" class="mt-2" />
+            <x-jet-input id="object" type="text" class="mt-1 block w-full" wire:model.defer="object" />
+            <x-jet-input-error for="object" class="mt-2" />
             {{-- content --}}
             <x-jet-label for="content" value="{{ __('Content') }}" />
-            <textarea id="content" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full" wire:model.defer="mail.content" ></textarea>
-            <x-jet-input-error for="mail.content" class="mt-2" />
+            <textarea id="content" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full" wire:model.defer="content" ></textarea>
+            <x-jet-input-error for="content" class="mt-2" />
             {{-- Photo --}}
             <x-jet-label for="file" value="{{ __('Attach file') }}" />
             <input id="file" class="mt-2 mr-2"
