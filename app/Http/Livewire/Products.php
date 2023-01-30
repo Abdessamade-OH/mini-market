@@ -193,4 +193,5 @@ class Products extends Component
         }   
         $this->confirmingProductAdd = false;
     }
+
 }

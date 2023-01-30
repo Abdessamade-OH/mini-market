@@ -20,7 +20,7 @@
         </div>
     </div>
 
-    <div class="mt-6"> {{-- margin top of 6 --}}
+    <div class="mt-6 "> {{-- margin top of 6 --}}
         <div class="flex justify-between">
             <div>
                 <input wire:model.debounce.200ms="q" type="search" placeholder="search" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
@@ -41,7 +41,7 @@
             </div>
         </div>
 
-        <table class="table-auto w-full"> {{-- full width --}}
+        <table class="table-auto w-full "> {{-- full width --}}
             <thead>
                 <tr>
                     <th class="px-4 py-2"> {{-- padding x of 4 --}}
@@ -202,4 +202,6 @@
             </x-jet-danger-button>
         </x-slot>
     </x-jet-dialog-modal>
+
+    
 </div>

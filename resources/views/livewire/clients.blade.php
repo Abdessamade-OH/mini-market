@@ -110,8 +110,8 @@
                         </td>
                         <td class="border px-4 py-2 ">
                             <div class="flex justify-center w-full">
-                                <x-jet-button wire:click="confirmUserEmail({{$u->id}})" class="mr-6 mb-2 bg-orange-500 hover:bg-orange-700">
-                                    Email
+                                <x-jet-button wire:click="confirmUserEmail({{$u->id}})" class="mr-6 mb-2 bg-orange-500 hover:bg-orange-700" wire:loading.attr="disabled">
+                                    {{ __('Email') }}
                                 </x-jet-button>
                                 @if($u->utype==='USR')
                                     <x-jet-danger-button class="mr-6 mb-2" wire:click="confirmUserBan({{$u->id}})" wire:loading.attr="disabled">
@@ -212,5 +212,39 @@
         </x-slot>
     </x-jet-confirmation-modal>
 
+    {{-- Emails --}}
+    <x-jet-dialog-modal wire:model="confirmingUserEmail">
+        <x-slot name="title">
+            Email
+        </x-slot>
+
+        <x-slot name="content">
+            {{-- Object --}}
+            <x-jet-label for="object" value="{{ __('Object') }}" />
+            <x-jet-input id="object" type="text" class="mt-1 block w-full" wire:model.defer="mail.object" />
+            <x-jet-input-error for="mail.object" class="mt-2" />
+            {{-- content --}}
+            <x-jet-label for="content" value="{{ __('Content') }}" />
+            <textarea id="content" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full" wire:model.defer="mail.content" ></textarea>
+            <x-jet-input-error for="mail.content" class="mt-2" />
+            {{-- Photo --}}
+            <x-jet-label for="file" value="{{ __('Attach file') }}" />
+            <input id="file" class="mt-2 mr-2"
+             type="file"
+              wire:model.defer="file"
+               value="{{ __('Attach file ?') }}" />
+        </x-slot>
+
+        <x-slot name="footer">
+            {{-- on cancel, make the flag false again --}}
+            <x-jet-secondary-button wire:click="$set('confirmingUserEmail', false)" wire:loading.attr="disabled">
+                {{ __('Cancel') }}
+            </x-jet-secondary-button>
+            {{-- the flag holds in the user id --}}
+            <x-jet-danger-button class="ml-3 bg-green-500 hover:bg-green-700" wire:click="emailUser({{$confirmingUserEmail}})" wire:loading.attr="disabled">
+                Email User
+            </x-jet-danger-button>
+        </x-slot>
+    </x-jet-dialog-modal>
 </div>
 

@@ -17,11 +17,13 @@ class Clients extends Component
     public $active;
     public $utype;
     public $clients;
+    public $mail;
 
     public $confirmingUserDeletion = false;
     public $confirmingUserEdit = false;
     public $confirmingUserBan = false;
     public $confirmingUserPromotion = false;
+    public $confirmingUserEmail = false;
 
     protected $queryString = [
         'q' => ['except' => ''],
@@ -32,7 +34,9 @@ class Clients extends Component
     protected $rules = [
         'category.name' => 'required|string|min:3',
         'category.description' => 'required|string|min:10',
-        'category.icon_class' => 'required|string'
+        'category.icon_class' => 'required|string',
+        'mail.object' => 'required|string|min:3',
+        'mail.content' => 'required|string|min:5',
     ];
     
     public function render()
@@ -87,23 +91,25 @@ class Clients extends Component
         $this->banned = $user->banned;
     }
 
-    public function deleteUser(User $user) //model binding (we passed in the id)
+    public function confirmUserEmail($id)
     {
-        $user->delete();
-        $this->confirmingUserDeletion = false;
-        $this->resetPage();
-        session()->flash('message', 'user Deleted successfully');
-    }
-
-    public function confirmUserEmail(User $user)
-    {
-        dd('test');
+        $this->confirmingUserEmail = $id;
+        //$this->mail = 
     }
 
     public function confirmUserPromotion(User $user)
     {
         $this->confirmingUserPromotion = $user->id;
         $this->utype = $user->utype;
+    }
+
+
+    public function deleteUser(User $user) //model binding (we passed in the id)
+    {
+        $user->delete();
+        $this->confirmingUserDeletion = false;
+        $this->resetPage();
+        session()->flash('message', 'user Deleted successfully');
     }
 
     public function banUser(User $user)
@@ -140,4 +146,12 @@ class Clients extends Component
         $this->confirmingUserPromotion = false;
     }
 
+    public function emailUser(User $user)
+    {
+        /*$this->mail->validate([
+            'object' => ['required', 'string', 'min=5'],
+            'content' => ['required', 'string', 'min=10']
+        ]);*/
+        dd('test');
+    }
 }
