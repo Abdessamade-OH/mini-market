@@ -53,7 +53,7 @@
                                     <li>
                                         <div class="shopping-cart-list">
                                             <div class="media">
-                                                <img class="d-flex mr-3" src="assets/img/logo/avatar.jpg" width="60">
+                                                <img class="d-flex mr-3" src="{{asset('assets/img/logo/avatar.jpg')}}" width="60">
                                                 <div class="media-body">
                                                     <h5><a href="javascript:void(0)">Carrot</a></h5>
                                                     <p class="price">
@@ -64,7 +64,7 @@
                                                 </div>
                                             </div>
                                             <div class="media">
-                                                <img class="d-flex mr-3" src="assets/img/logo/avatar.jpg" width="60">
+                                                <img class="d-flex mr-3" src="{{asset('assets/img/logo/avatar.jpg')}}" width="60">
                                                 <div class="media-body">
                                                     <h5><a href="javascript:void(0)">Carrot</a></h5>
                                                     <p class="price">
@@ -75,7 +75,7 @@
                                                 </div>
                                             </div>
                                             <div class="media">
-                                                <img class="d-flex mr-3" src="assets/img/logo/avatar.jpg" width="60">
+                                                <img class="d-flex mr-3" src="{{asset('assets/img/logo/avatar.jpg')}}" width="60">
                                                 <div class="media-body">
                                                     <h5><a href="javascript:void(0)">Carrot</a></h5>
                                                     <p class="price">
@@ -86,7 +86,7 @@
                                                 </div>
                                             </div>
                                             <div class="media">
-                                                <img class="d-flex mr-3" src="assets/img/logo/avatar.jpg" width="60">
+                                                <img class="d-flex mr-3" src="{{asset('assets/img/logo/avatar.jpg')}}" width="60">
                                                 <div class="media-body">
                                                     <h5><a href="javascript:void(0)">Carrot</a></h5>
                                                     <p class="price">
@@ -117,7 +117,7 @@
                                 @if(Auth::user()->utype === 'ADM')
                                     <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <div class="avatar-header"><img src="assets/img/logo/avatar.jpg"></div> My Account ({{Auth::user()->name}}) </a>
+                                        <div class="avatar-header"><img src="{{asset('assets/img/logo/avatar.jpg')}}"></div> My Account ({{Auth::user()->name}}) </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         
                                         <a class="dropdown-item" href="{{ url('user/profile') }}">Settings</a> 
@@ -131,7 +131,7 @@
                                 @else
                                     <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <div class="avatar-header"><img src="assets/img/logo/avatar.jpg"></div> My Account ({{Auth::user()->name}}) </a>
+                                            <div class="avatar-header"><img src="{{asset('assets/img/logo/avatar.jpg')}}"></div> My Account ({{Auth::user()->name}}) </a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                             
                                             <a class="dropdown-item" href="{{ url('/user/profile') }}">Settings</a>

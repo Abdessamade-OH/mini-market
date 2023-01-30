@@ -41,7 +41,7 @@
                                 <div class="form-group row">
                                     <div class="col-md-12">
                                         <div class="checkbox">
-                                            <input id="checkbox0" type="checkbox" name="terms">
+                                            <input id="checkbox0" type="checkbox" name="terms" required>
                                             <label for="checkbox0" class="mb-0">I Agree with <a href="/terms" class="text-light">Terms & Conditions</a> </label>
                                         </div>
                                     </div>
