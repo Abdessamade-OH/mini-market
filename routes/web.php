@@ -8,10 +8,12 @@ use App\Http\Controllers\CrudController;
 use App\Http\Controllers\ProductController;
 use App\Http\Livewire\ProductDetailComponent;
 use App\Http\Livewire\AboutComponent;
+use App\Http\Livewire\ContactUs;
 use App\Http\Livewire\FaqComponent;
 use App\Http\Livewire\TermsComponent;
 use App\Http\Livewire\PrivacyComponent;
 use App\Http\Livewire\Admin\AdminSettingsComponent;
+use App\Http\Livewire\Admin\AdminContactUs;
 use App\Http\Livewire\User\UserSettingsComponent;
 use App\Http\Livewire\HomeComponent;
 use App\Http\Livewire\ShopComponent;
@@ -40,6 +42,7 @@ Route::get('/faq',FaqComponent::class);
 Route::get('/terms',TermsComponent::class);
 Route::get('/privacy',PrivacyComponent::class);
 Route::get('/product/detail',ProductDetailComponent::class);
+Route::get('/contact-us',ContactUs::class);
 
 // Route::middleware([
 //     'auth:sanctum',
@@ -68,5 +71,6 @@ Route::middleware('admin')->group(function(){
     Route::get('/categories', [CrudController::class, 'categories'])->name('categories');
     Route::get('/clients', [CrudController::class, 'clients'])->name('clients');
     Route::get('/commands', [CrudController::class, 'commands'])->name('commands');
+    Route::get('/admin/contact-us', [AdminContactUs::class, 'admin.contact'])->name('admin.contact');
 
 });

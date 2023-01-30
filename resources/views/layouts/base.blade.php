@@ -122,7 +122,8 @@
                                         
                                         <a class="dropdown-item" href="{{ url('user/profile') }}">Settings</a> 
                                         <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a> 
-                                        
+                                       
+										<a title="Contact Messages" href="{{route('admin.contact')}}">Contact Message</a>
                                         <form id="logout-form" method="POST" action="{{route('logout')}}"> 
                                         @csrf 
                                         </form> 
@@ -177,7 +178,7 @@
                             <a href="/about">About</a>
                         </li>
                         <li>
-                            <a href="contact.html">Contact Us</a>
+                            <a href="/contact-us">Contact Us</a>
                         </li>
                         <li>
                             <a href="/faq">FAQ</a>

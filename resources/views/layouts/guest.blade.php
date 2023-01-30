@@ -201,7 +201,7 @@
                             <a href="/about">About</a>
                         </li>
                         <li>
-                            <a href="contact.html">Contact Us</a>
+                            <a href="/contact-us">Contact Us</a>
                         </li>
                         <li>
                             <a href="/faq">FAQ</a>
