@@ -85,7 +85,7 @@
                         <td class="border px-4 py-2">
                             
                             <div class="flex flex-row items-center flex-wrap">
-                                <div class="mr-2" x-show="! photoPreview">
+                                <div class="mr-2">
                                     <img src="{{ $product->image_path }}" alt="Pic " class="rounded-full h-8 w-8 object-cover">
                                 </div>
                             
