@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Contact;
+use Illuminate\Support\Facades\Auth;
 
 class ContactUs extends Component
 {
@@ -39,14 +40,21 @@ class ContactUs extends Component
             $contact->save();
             session()->flash('message','Thank you, Your message has been sent successfully!');
         }
-        public function render()
+    public function render()
     {
-        $total = 0;
-        foreach(auth()->user()->products as $product)
-        {
-            $total += $product->prix * $product->pivot->quantity;
+        if (Auth::check()) {
+            $total = 0;
+            foreach(auth()->user()->products as $product)
+            {
+                $total += $product->prix * $product->pivot->quantity;
+            }
+            $products = auth()->user()->products->all();
+            return view('livewire.contact-us')->layout('layouts.base', ['total' => $total, 'products' => $products,]);
         }
-        $products = auth()->user()->products->all();
-        return view('livewire.contact-us')->layout('layouts.base', ['total' => $total, 'products' => $products,]);
+        else
+        {
+            return view('livewire.contact-us')->layout('layouts.base');
+        }
+        
     }
 }

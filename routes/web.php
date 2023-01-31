@@ -44,7 +44,7 @@ Route::get('/terms',TermsComponent::class);
 Route::get('/privacy',PrivacyComponent::class);
 Route::get('/product/detail',ProductDetailComponent::class);
 Route::get('/contact-us',ContactUs::class);
-Route::get('/checkout',Checkout::class);
+
 
 // Route::middleware([
 //     'auth:sanctum',
@@ -59,6 +59,7 @@ Route::get('/checkout',Checkout::class);
 //for User or customer
 Route::middleware(['auth:sanctum','verified'])->group(function(){
     Route::get('/user/settings',UserSettingsComponent::class)->name('user.settings');
+    Route::get('/checkout',Checkout::class);
 });
 
 //for Admin
