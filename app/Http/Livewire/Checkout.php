@@ -10,13 +10,23 @@ class Checkout extends Component
     public function render()
     {
         if (Auth::check()) {
-            $total = 0;
+            $shipping = 120;
+            $subtotal = 0;
             foreach(auth()->user()->products as $product)
             {
-                $total += $product->prix * $product->pivot->quantity;
+                $subtotal += $product->prix * $product->pivot->quantity;
             }
+            $total = $subtotal + $shipping;
             $products = auth()->user()->products->all();
-            return view('livewire.checkout')->layout('layouts.base', ['total' => $total, 'products' => $products,]);
+            return view('livewire.checkout', [
+                'products' => $products,
+                'subtotal' => $subtotal,
+                'total' => $total,
+                'shipping' => $shipping,
+            ])->layout('layouts.base', [
+                'total' => $subtotal,
+                'products' => $products
+            ]);
         }
         else
         {

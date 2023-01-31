@@ -73,30 +73,19 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>
-                                                Ikan Segar x1
-                                            </td>
-                                            <td class="text-right">
-                                                Rp 30.000
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                Sirloin x1
-                                            </td>
-                                            <td class="text-right">
-                                                Rp 120.000
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                Mix Vegetables x1
-                                            </td>
-                                            <td class="text-right">
-                                                Rp 30.000
-                                            </td>
-                                        </tr>
+                                        @forelse($products as $product)
+                                            <tr>
+                                                <td>
+                                                    {{$product->name}}
+                                                </td>
+                                                <td class="text-right">
+                                                    {{$product->prix}} x {{$product->pivot->quantity}}
+                                                </td>
+                                            </tr>
+                                        @empty
+                                            <strong>No Products</strong>
+                                        @endforelse
+                                        
                                     </tbody>
                                     <tfooter>
                                         <tr>
@@ -104,7 +93,7 @@
                                                 <strong>Cart Subtotal</strong>
                                             </td>
                                             <td class="text-right">
-                                                Rp 180.000
+                                                {{$subtotal}} DH
                                             </td>
                                         </tr>
                                         <tr>
@@ -112,7 +101,7 @@
                                                 <strong>Shipping</strong>
                                             </td>
                                             <td class="text-right">
-                                                Rp 20.000
+                                                {{$shipping}} DH
                                             </td>
                                         </tr>
                                         <tr>
@@ -120,7 +109,7 @@
                                                 <strong>ORDER TOTAL</strong>
                                             </td>
                                             <td class="text-right">
-                                                <strong>Rp 200.000</strong>
+                                                <strong>{{$total}} DH</strong>
                                             </td>
                                         </tr>
                                     </tfooter>
@@ -141,6 +130,7 @@
                                 </label>
                             </div>
                         </div>
+
                         <p class="text-right mt-3">
                             <input checked="" type="checkbox"> I’ve read &amp; accept the <a href="#">terms &amp; conditions</a>
                         </p>
