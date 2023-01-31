@@ -35,15 +35,16 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-
-Route::get('/',HomeComponent::class);
-Route::get('/shop',ShopComponent::class);
-Route::get('/about',AboutComponent::class);
-Route::get('/faq',FaqComponent::class);
-Route::get('/terms',TermsComponent::class);
-Route::get('/privacy',PrivacyComponent::class);
-Route::get('/product/detail',ProductDetailComponent::class);
-Route::get('/contact-us',ContactUs::class);
+Route::middleware('notAdmin')->group(function(){
+    Route::get('/',HomeComponent::class);
+    Route::get('/shop',ShopComponent::class);
+    Route::get('/about',AboutComponent::class);
+    Route::get('/faq',FaqComponent::class);
+    Route::get('/terms',TermsComponent::class);
+    Route::get('/privacy',PrivacyComponent::class);
+    Route::get('/product/detail',ProductDetailComponent::class);
+    Route::get('/contact-us',ContactUs::class);
+});
 
 
 // Route::middleware([
@@ -59,7 +60,7 @@ Route::get('/contact-us',ContactUs::class);
 //for User or customer
 Route::middleware(['auth:sanctum','verified'])->group(function(){
     Route::get('/user/settings',UserSettingsComponent::class)->name('user.settings');
-    Route::get('/checkout',Checkout::class);
+    Route::get('/checkout',Checkout::class)->middleware('notAdmin');
 });
 
 //for Admin
