@@ -37,13 +37,16 @@ use Illuminate\Support\Facades\Route;
 // });
 Route::middleware('notAdmin')->group(function(){
     Route::get('/',HomeComponent::class);
-    Route::get('/shop', [CategorieController::class, 'shop']);
+    Route::get('/shop', ShopComponent::class);
     Route::get('/about',AboutComponent::class);
     Route::get('/faq',FaqComponent::class);
     Route::get('/terms',TermsComponent::class);
     Route::get('/privacy',PrivacyComponent::class);
-    Route::get('/product/detail/{id}', [ProductDetailComponent::class, 'prod'])->name('details');
+    //Route::get('/product/detail/{id}', [ProductDetailComponent::class, 'prod'])->name('details');
     Route::get('/contact-us',ContactUs::class);
+
+    Route::get('/product_details/{id}',[ProductDetailComponent::class,'product_details']);
+    Route::post('/add_card/{id}',[ProductDetailComponent::class,'add_card']);
 });
 
 

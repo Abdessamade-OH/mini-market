@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Categorie;
 use App\Models\Product;
+use App\Rules\max;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -14,6 +15,8 @@ class ShopComponent extends Component
     
     public $choosen = 'all';
     public $q;
+    public $product;
+    public $quantity;
 
     public $confirmingProductBuy = false;
     
@@ -47,6 +50,28 @@ class ShopComponent extends Component
                 'products' => $products,
                 'selected' => $selected
         ]);
+
+        if(Auth::check()) {
+            $total = 0;
+            foreach(auth()->user()->products as $product)
+            {
+                $total += $product->prix * $product->pivot->quantity;
+            }
+            $producto = auth()->user()->products->all();
+            return view('livewire.shop-component', [
+                'categories' => $categories,
+                'products' => $products,
+                'selected' => $selected
+        ])->layout('layouts.base', ['total' => $total, 'products' => $producto,]);
+        }
+        else
+        {
+            return view('livewire.shop-component', [
+                'categories' => $categories,
+                'products' => $products,
+                'selected' => $selected
+        ])->layout('layouts.base');
+        }
     }
 
     public function updatingQ()
@@ -61,12 +86,15 @@ class ShopComponent extends Component
 
     public function confirmProductBuy(Product $product) 
     {
-        return view('livewire.product-detail-component');
+        $this->validate([
+            'quantity' => ['required', 'numeric', 'min:1', new max($product->stock)],
+        ]);
+        $this->product = $product;
+        auth()->user()->products()->attach($this->product, ['quantity' => $this->quantity]);
+        $this->confirmingProductBuy = true;
+
+        $this->reset('quantity');
     }
 
-    public function buyProduct(Product $product)
-    {
-        dd('test');
-    }
 
 }

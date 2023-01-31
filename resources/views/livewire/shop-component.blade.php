@@ -136,8 +136,13 @@
                     @endif
                     <td class="border px-4 py-2">
                         <div class="flex justify-center">
-                            <x-jet-button wire:click="" class="mr-6 bg-blue-500 hover:bg-blue-700">
-                                <a href=" {{ url('/product/detail', ['id'=>$product->id] ) }} ">Add To Cart</a>
+                            {{-- stock --}}
+                            <x-jet-label for="quantity" class="mt-2 mr-2" value="{{ __('Quantity') }}" />
+                            <x-jet-input id="quantity" type="number" min="1" class="mr-6 block" wire:model.defer="quantity" />
+                            <x-jet-input-error for="quantity"/>
+
+                            <x-jet-button wire:click="confirmProductBuy({{$product->id}})" class="mr-6 bg-blue-500 hover:bg-blue-700">
+                                Add To Cart
                             </x-jet-button>
                         </div>
                     </td>
@@ -145,5 +150,6 @@
             @endforeach
         </tbody>
     </table>
+
 
 </div>
