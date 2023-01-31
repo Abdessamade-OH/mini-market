@@ -114,10 +114,10 @@
             <x-jet-label for="desc" value="{{ __('Description') }}" />
             <textarea id="desc" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full" wire:model.defer="category.description" ></textarea>
             <x-jet-input-error for="category.description" class="mt-2" />
-            {{-- name --}}
+            {{-- icon --}}
             <x-jet-label for="icon" value="{{ __('Icon') }}" />
-            <x-jet-input id="icon" type="text" class="mt-1 block w-full" wire:model.defer="category.icon_class" />
-            <x-jet-input-error for="category.icon_class" class="mt-2" />
+            <x-jet-input id="icon" type="text" class="mt-1 block w-full" wire:model.defer="icon" />
+            <x-jet-input-error for="icon" class="mt-2" />
         </x-slot>
 
         <x-slot name="footer">

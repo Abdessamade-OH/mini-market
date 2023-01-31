@@ -14,6 +14,8 @@ class Categories extends Component
     public $sortBy = 'id';
     public $sortAsc = true;
     public $category;
+    public $icon;
+    //public $
 
     public $confirmingCategoryDeletion = false;
     public $confirmingCategoryAdd = false;
@@ -30,7 +32,7 @@ class Categories extends Component
     protected $rules = [
         'category.name' => 'required|string|min:3',
         'category.description' => 'required|string|min:10',
-        'category.icon_class' => 'string'
+        'icon' => 'string'
     ];
     
     public function render()
@@ -83,6 +85,7 @@ class Categories extends Component
     public function confirmCategoryAdd() 
     {
         $this->reset(['category']);
+        $this->reset(['icon']);
         $this->confirmingCategoryAdd = true;
     }
 
@@ -101,6 +104,7 @@ class Categories extends Component
         if(isset($this->category->id))
         {
             //dd($this->category);
+            $this->category->icon_class=$this->icon;
             $this->category->save();
             //dd($this->category);
             session()->flash('message', 'category Saved successfully');
@@ -108,13 +112,13 @@ class Categories extends Component
         else
         {
             //dd($this->category['name']);
-            if(isset($this->category->icon_class))
+            //dd($this->icon);
+            if(isset($this->icon))
             {
                 Categorie::create([
                     'name' => $this->category['name'],
-                    'icon_class' => $this->category['icon_class'],
+                    'icon_class' => $this->icon,
                     'description' => $this->category['description'],
-                    
                 ]);
             }
             else

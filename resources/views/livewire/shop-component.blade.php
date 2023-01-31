@@ -1,3 +1,4 @@
+
 <div id="page-content" class="page-content">
         <div class="banner">
             <div class="jumbotron jumbotron-bg text-center rounded-0" style="background-image: url('assets/img/bg-header.jpg');">
@@ -16,9 +17,11 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="shop-categories owl-carousel mt-5">
+                        
                         @foreach($categories as $category)
                             <div class="item">
                                 <a href="">
+                                    
                                     <div class="media d-flex align-items-center justify-content-center">
                                         <span class="d-flex mr-2"><i class="{{$category->icon_class}}"></i></span>
                                         <div class="media-body">

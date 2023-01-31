@@ -8,6 +8,8 @@ use Livewire\Component;
 
 class ShopComponent extends Component
 {
+    public $category = 'all';
+    
     public function render()
     {
         $categories = Categorie::all();
