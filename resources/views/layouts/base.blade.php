@@ -43,7 +43,7 @@
                         @auth
                         <li class="nav-item dropdown">
                             <a href="javascript:void(0)" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-shopping-basket"></i> <span class="badge badge-primary">5</span>
+                                <i class="fa fa-shopping-basket"></i> <span class="badge badge-primary">{{Auth()->user()->products->count()}}</span>
                             </a>
                             <div class="dropdown-menu shopping-cart">
                                 <ul>
@@ -52,56 +52,31 @@
                                     </li>
                                     <li>
                                         <div class="shopping-cart-list">
-                                            <div class="media">
-                                                <img class="d-flex mr-3" src="{{asset('assets/img/logo/avatar.jpg')}}" width="60">
-                                                <div class="media-body">
-                                                    <h5><a href="javascript:void(0)">Carrot</a></h5>
-                                                    <p class="price">
-                                                        <span class="discount text-muted">Rp. 700.000</span>
-                                                        <span>Rp. 100.000</span>
-                                                    </p>
-                                                    <p class="text-muted">Qty: 1</p>
+                                            @forelse($products as $product)
+                                                <div class="media">
+                                                    <img class="d-flex mr-3" src="{{$product->image_path}}" width="60">
+                                                    <div class="media-body">
+                                                        <h5><a href="javascript:void(0)">{{$product->name}}</a></h5>
+                                                        <p class="price">
+                                                            <span>{{$product->prix}} DH</span>
+                                                        </p>
+                                                        <p class="text-muted">Quantity: {{$product->pivot->quantity}}</p>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="media">
-                                                <img class="d-flex mr-3" src="{{asset('assets/img/logo/avatar.jpg')}}" width="60">
-                                                <div class="media-body">
-                                                    <h5><a href="javascript:void(0)">Carrot</a></h5>
-                                                    <p class="price">
-                                                        <span class="discount text-muted">Rp. 700.000</span>
-                                                        <span>Rp. 100.000</span>
-                                                    </p>
-                                                    <p class="text-muted">Qty: 1</p>
-                                                </div>
-                                            </div>
-                                            <div class="media">
-                                                <img class="d-flex mr-3" src="{{asset('assets/img/logo/avatar.jpg')}}" width="60">
-                                                <div class="media-body">
-                                                    <h5><a href="javascript:void(0)">Carrot</a></h5>
-                                                    <p class="price">
-                                                        <span class="discount text-muted">Rp. 700.000</span>
-                                                        <span>Rp. 100.000</span>
-                                                    </p>
-                                                    <p class="text-muted">Qty: 1</p>
-                                                </div>
-                                            </div>
-                                            <div class="media">
-                                                <img class="d-flex mr-3" src="{{asset('assets/img/logo/avatar.jpg')}}" width="60">
-                                                <div class="media-body">
-                                                    <h5><a href="javascript:void(0)">Carrot</a></h5>
-                                                    <p class="price">
-                                                        <span class="discount text-muted">Rp. 700.000</span>
-                                                        <span>Rp. 100.000</span>
-                                                    </p>
-                                                    <p class="text-muted">Qty: 1</p>
-                                                </div>
-                                            </div>
+                                            @empty
+                                                <span>No products</span>
+                                            @endforelse
                                         </div>
                                     </li>
                                     <li>
+                                        
                                         <div class="drop-title d-flex justify-content-between">
                                             <span>Total:</span>
-                                            <span class="text-primary"><strong>Rp. 2000.000</strong></span>
+                                            <span class="text-primary">
+                                                <strong>
+                                                    {{$total}} DH
+                                                </strong>
+                                            </span>
                                         </div>
                                     </li>
                                     <li class="d-flex justify-content-between pl-3 pr-3 pt-3">

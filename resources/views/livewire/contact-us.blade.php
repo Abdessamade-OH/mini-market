@@ -57,7 +57,7 @@
 
                                 <p class="text-light">
                                     BP, Tangier<br>
-                                    OHMAD ABDESSAMAD<br>
+                                    Nouha, professional chef and entrepreneur<br>
                                 </p>
 
                                 <p class="text-light">
