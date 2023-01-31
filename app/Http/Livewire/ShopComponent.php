@@ -2,12 +2,16 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Categorie;
 use Livewire\Component;
 
 class ShopComponent extends Component
 {
     public function render()
     {
-        return view('livewire.shop-component')->layout('layouts.base');
+        $categories = Categorie::all();
+        return view('livewire.shop-component', [
+            'categories' => $categories,
+        ])->layout('layouts.base');
     }
 }

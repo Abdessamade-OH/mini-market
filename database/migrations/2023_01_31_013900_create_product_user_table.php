@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCommandsTable extends Migration
+class CreateProductUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateCommandsTable extends Migration
      */
     public function up()
     {
-        Schema::create('commands', function (Blueprint $table) {
+        Schema::create('product_user', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->foreignId('product_id')->constrained();
@@ -29,6 +29,6 @@ class CreateCommandsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('commands');
+        Schema::dropIfExists('product_user');
     }
 }

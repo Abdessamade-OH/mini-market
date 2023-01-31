@@ -20,5 +20,8 @@ class Product extends Model
         return $query->where('stock', '>', 0);
     }
 
-    
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }
