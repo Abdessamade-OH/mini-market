@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Mail\NormalMarkdownMail;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
@@ -97,7 +98,7 @@ class Clients extends Component
     public function confirmUserEmail($id)
     {
         $this->confirmingUserEmail = $id;
-        //$this->mail = 
+        $this->reset(['object', 'content', 'file']);
     }
 
     public function confirmUserPromotion(User $user)
@@ -161,12 +162,8 @@ class Clients extends Component
             'content' => ['required', 'string', 'min:5'],
         ]);
 
-        if(isset($this->file)){
-            //Mail::to($user->email)->send(new normalMarkdownMail($this->object, $this->content));
-        }
-        else{
+        Mail::to($user->email)->send(new NormalMarkdownMail( $this->object, $this->content, $user->name, auth()->user()));
 
-        }
-        
+        $this->confirmingUserEmail = false;
     }
 }
