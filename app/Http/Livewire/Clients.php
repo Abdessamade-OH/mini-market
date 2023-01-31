@@ -5,12 +5,15 @@ namespace App\Http\Livewire;
 use App\Mail\NormalMarkdownMail;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 use Livewire\WithPagination;
 
 class Clients extends Component
 {
     use WithPagination;
+    use WithFileUploads;    
 
     public $q;
     public $sortBy = 'id';
@@ -157,12 +160,29 @@ class Clients extends Component
             'content' => ['required', 'string', 'min=10']
         ]);*/
         //dd('test');
+        $path = null;
+        
+        
         $this->validate([
             'object' => ['required', 'string', 'min:3'],
             'content' => ['required', 'string', 'min:5'],
         ]);
+        if(isset($this->file))
+        {
+            $filename = time().'.'.$this->file->extension();
 
-        Mail::to($user->email)->send(new NormalMarkdownMail( $this->object, $this->content, $user->name, auth()->user()));
+            $path = $this->file->storeAs('email-files', $filename, 'public');
+            $path = 'public/'.$path;
+            //$path = $this->file->store('/public/email-files');
+            //dd($path);
+            //$path = Storage::url('email-files/'.$filename);
+        }
+        Mail::to($user->email)->send(new NormalMarkdownMail(
+            $this->object,
+            $this->content,
+            $user->name, auth()->user(),
+            $path
+        ));
 
         $this->confirmingUserEmail = false;
     }
