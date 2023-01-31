@@ -178,7 +178,7 @@
 
     <x-jet-dialog-modal wire:model="confirmingCommandEdit">
         <x-slot name="title">
-            Edit command quantity
+            Edit command quantity, on Stock: {{$max}}
         </x-slot>
 
         <x-slot name="content">
