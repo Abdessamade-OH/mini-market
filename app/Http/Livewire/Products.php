@@ -152,7 +152,7 @@ class Products extends Component
 
                     $path = $this->photo->store('/public/products-photos');
                     
-                    $this->product->image_path = $path;
+                    $this->product->image_path = Storage::url($path);
                 }
             }
             $this->product->save();

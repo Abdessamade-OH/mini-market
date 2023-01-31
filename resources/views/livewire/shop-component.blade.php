@@ -20,16 +20,18 @@
                         
                         @foreach($categories as $category)
                             <div class="item">
-                                <a href="">
-                                    
-                                    <div class="media d-flex align-items-center justify-content-center">
+                                
+                                    <x-jet-danger-button >
+                                        {{ __('Delete') }}
+                                    </x-jet-danger-button>
+                                    <div class="media d-flex align-items-center justify-content-center" >
                                         <span class="d-flex mr-2"><i class="{{$category->icon_class}}"></i></span>
                                         <div class="media-body">
                                             <h5>{{$category->name}}</h5>
                                             <p>{{$category->description}}</p>
                                         </div>
                                     </div>
-                                </a>
+                                
                             </div>
                         @endforeach
                     </div>

@@ -5,10 +5,13 @@ namespace App\Http\Livewire;
 use App\Models\Categorie;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class ShopComponent extends Component
 {
-    public $category = 'all';
+    use WithPagination;
+    
+    public $choosen = 'all';
     
     public function render()
     {
@@ -22,13 +25,19 @@ class ShopComponent extends Component
             $products = auth()->user()->products->all();
             return view('livewire.shop-component', [
                 'categories' => $categories,
-            ])->layout('layouts.base', ['total' => $total, 'products' => $products,]);
+            ]);
         }
         else
         {
             return view('livewire.shop-component', [
                 'categories' => $categories,
-            ])->layout('layouts.base');
+            ]);
         }
+    }
+
+    public function chooseCategory($id)
+    {
+        dd($id);
+        $this->choosen = $id;
     }
 }

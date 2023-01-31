@@ -37,7 +37,7 @@ use Illuminate\Support\Facades\Route;
 // });
 Route::middleware('notAdmin')->group(function(){
     Route::get('/',HomeComponent::class);
-    Route::get('/shop',ShopComponent::class);
+    Route::get('/shop', [CategorieController::class, 'shop']);
     Route::get('/about',AboutComponent::class);
     Route::get('/faq',FaqComponent::class);
     Route::get('/terms',TermsComponent::class);
