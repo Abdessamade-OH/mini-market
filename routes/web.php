@@ -42,7 +42,7 @@ Route::middleware('notAdmin')->group(function(){
     Route::get('/faq',FaqComponent::class);
     Route::get('/terms',TermsComponent::class);
     Route::get('/privacy',PrivacyComponent::class);
-    Route::get('/product/detail',ProductDetailComponent::class);
+    Route::get('/product/detail/{id}', [ProductDetailComponent::class, 'prod'])->name('details');
     Route::get('/contact-us',ContactUs::class);
 });
 

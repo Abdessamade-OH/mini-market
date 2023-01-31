@@ -19,7 +19,14 @@
     <link rel="stylesheet" type="text/css" media="all" href="{{ asset('assets/packages/thumbelina/thumbelina.css') }}">
     <link rel="stylesheet" type="text/css" media="all" href="{{ asset('assets/packages/bootstrap-touchspin/bootstrap-touchspin.css') }}">
     <link rel="stylesheet" type="text/css" media="all" href="{{ asset('assets/css/theme.css') }}">
-    @livewireStyles
+     <!-- Fonts -->
+     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
+     <!-- Styles -->
+     @livewireStyles
+     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+     <!-- Scripts -->
+     <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 <body>
     <div class="page-header">
@@ -140,7 +147,7 @@
             </div>
         </nav>
     </div>
-
+    
     <livewire:shop-component/> 
 
     <footer>
@@ -213,7 +220,8 @@
         </div>
         <p class="copyright">&copy; 2023 Freshcery | Groceries Organic Store. All rights reserved.</p>
     </footer>
-
+    <livewire:scripts />
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
     <script type="text/javascript" src="{{ asset('assets/js/jquery.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/js/jquery-migrate.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/packages/bootstrap/libraries/popper.js') }}"></script>
@@ -225,5 +233,7 @@
     <script type="text/javascript" src="{{ asset('assets/packages/bootstrap-touchspin/bootstrap-touchspin.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/js/theme.js') }}"></script>
     @livewireStyles
+
+    @stack('modals')
 </body>
 </html>

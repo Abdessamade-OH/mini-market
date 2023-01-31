@@ -29,7 +29,7 @@ class CategorieController extends Controller
         }
         else
         {
-            return view('shopLayout');
+            return view('layouts.base');
         }
     }
 }
